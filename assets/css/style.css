@@ -993,167 +993,151 @@ html[dir="rtl"] .app-input-field {
   letter-spacing: 0.5px;
 }
 
-.app-games-list {
+/* ── 2x2 Games Grid ── */
+.app-games-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
-.app-game-item {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.app-game-card-content {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  background: linear-gradient(145deg, rgba(37, 244, 238, 0.04), rgba(255, 0, 80, 0.03), rgba(22, 24, 35, 0.8));
+.app-game-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: relative;
-  overflow: hidden;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    0 4px 16px rgba(0, 0, 0, 0.3);
+  gap: 10px;
+  padding: 18px 10px 14px;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: all 0.22s ease;
+  overflow: hidden;
 }
 
-.app-game-card-content:hover {
-  background: linear-gradient(145deg, rgba(37, 244, 238, 0.08), rgba(255, 0, 80, 0.06));
-  border-color: rgba(37, 244, 238, 0.25);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 0 20px rgba(37, 244, 238, 0.14),
-    0 0 40px rgba(255, 0, 80, 0.06),
-    0 8px 24px rgba(0, 0, 0, 0.4);
+.app-game-card:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.15);
   transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
 }
 
-.app-game-item.wide .app-game-card-content {
-  aspect-ratio: auto;
-  height: 68px;
-  flex-direction: row;
-}
-
-.app-game-wide-layout {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  width: 100%;
-  padding-left: 16px;
-}
-
-html[dir="rtl"] .app-game-wide-layout {
-  padding-left: 0;
-  padding-right: 16px;
-}
-
-.app-game-icon-container {
-  width: 44px;
-  height: 44px;
-  border-radius: 14px;
+/* ── Game icon square ── */
+.app-game-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.3rem;
+  font-size: 1.6rem;
   color: #fff;
   flex-shrink: 0;
 }
 
 .horse-icon {
-  background: linear-gradient(135deg, #ff9f0a, #ffb340);
-  box-shadow: 0 8px 16px rgba(255, 159, 10, 0.25);
+  background: linear-gradient(135deg, #ff9f0a, #ff6b00);
+  box-shadow: 0 6px 16px rgba(255, 159, 10, 0.35);
 }
 
 .football-icon {
-  background: linear-gradient(135deg, #30d158, #34c759);
-  box-shadow: 0 8px 16px rgba(48, 209, 88, 0.25);
+  background: linear-gradient(135deg, #30d158, #00a83e);
+  box-shadow: 0 6px 16px rgba(48, 209, 88, 0.35);
+}
+
+.rocket-icon {
+  background: linear-gradient(135deg, #7c3aed, #5b21b6);
+  box-shadow: 0 6px 16px rgba(124, 58, 237, 0.35);
+}
+
+.formula-icon {
+  background: linear-gradient(135deg, #ff2d55, #bf1034);
+  box-shadow: 0 6px 16px rgba(255, 45, 85, 0.35);
 }
 
 .map-icon {
   background: linear-gradient(135deg, #bf5af2, #ff2d55);
-  box-shadow: 0 8px 16px rgba(191, 90, 242, 0.25);
+  box-shadow: 0 6px 16px rgba(191, 90, 242, 0.28);
 }
 
-.app-game-badge {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  font-size: 0.55rem;
-  font-weight: 800;
-  padding: 2px 6px;
-  border-radius: 6px;
-}
-
-html[dir="rtl"] .app-game-badge {
-  right: auto;
-  left: 8px;
-}
-
-.app-game-badge[data-i18n="app.badge.updated"] {
-  background: rgba(255, 255, 255, 0.12);
-  color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.app-game-badge[data-i18n="app.badge.new"] {
-  background: var(--tiktok-gradient);
-  color: #ffffff;
-  box-shadow: 0 0 10px rgba(255, 0, 80, 0.35);
-  font-weight: 800;
-}
-
-.app-game-card-name {
+/* ── Game name ── */
+.app-game-name {
   font-size: 0.72rem;
   font-weight: 700;
   color: rgba(255, 255, 255, 0.85);
   text-align: center;
+  line-height: 1.2;
 }
 
-.app-game-item.wide .app-game-card-name {
-  font-size: 0.8rem;
-  text-align: left;
+/* ── Badges wrap (top-right corner of card) ── */
+.app-game-badge-wrap {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  display: flex;
+  gap: 3px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
-html[dir="rtl"] .app-game-item.wide .app-game-card-name {
-  text-align: right;
+html[dir="rtl"] .app-game-badge-wrap {
+  right: auto;
+  left: 7px;
+  justify-content: flex-start;
 }
 
+.app-badge {
+  font-size: 0.52rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  padding: 2px 5px;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+
+.app-badge-new {
+  background: rgba(37, 244, 238, 0.15);
+  border: 1px solid rgba(37, 244, 238, 0.4);
+  color: var(--primary);
+}
+
+.app-badge-special {
+  background: rgba(243, 186, 47, 0.15);
+  border: 1px solid rgba(243, 186, 47, 0.45);
+  color: #f3ba2f;
+}
+
+/* ── Logout / version ── */
 .app-logout-btn {
   width: 100%;
   height: 40px;
-  background: transparent;
+  background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.55);
   font-size: 0.8rem;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 
 .app-logout-btn:hover {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.07);
   color: #fff;
   border-color: rgba(255, 255, 255, 0.15);
 }
 
 .app-version-label {
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   font-weight: 700;
   color: rgba(255, 255, 255, 0.15);
-  letter-spacing: 0.5px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+  text-align: center;
 }
 
 @media (max-width: 576px) {
@@ -1167,11 +1151,14 @@ html[dir="rtl"] .app-game-item.wide .app-game-card-name {
   .app-select-game-title h2 {
     font-size: 1.7rem;
   }
-  .app-game-card-content {
-    height: 95px;
+  .app-game-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 1.3rem;
   }
-  .app-game-item.wide .app-game-card-content {
-    height: 64px;
+  .app-game-card {
+    padding: 14px 8px 12px;
+    gap: 8px;
   }
 }
 
@@ -1736,6 +1723,42 @@ html[dir="rtl"] .premium-tag {
 .price-currency {
   font-size: 0.95rem;
   color: var(--text-muted);
+}
+
+/* ── Renewal price row ── */
+.sub-renewal {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 14px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  width: fit-content;
+}
+
+.sub-renewal i {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  animation: spin 3s linear infinite;
+}
+
+.sub-renewal.premium-renewal {
+  background: rgba(37, 244, 238, 0.05);
+  border-color: rgba(37, 244, 238, 0.18);
+  color: rgba(37, 244, 238, 0.75);
+}
+
+.sub-renewal.premium-renewal i {
+  color: var(--primary);
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
 .sub-desc {

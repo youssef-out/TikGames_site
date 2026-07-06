@@ -222,12 +222,12 @@ function subscribe(planType) {
   let message = '';
   if (planType === 'regular') {
     message = currentLanguage === 'ar' 
-      ? "مرحباً، أود الاشتراك في الباقة العادية لتطبيق TikTok Games بقيمة 20 دولار (اشتراك لمرة واحدة مدى الحياة)."
-      : "Hello, I would like to subscribe to the Regular Plan for TikTok Games for 20 USD (One-time payment).";
+      ? "مرحباً، أود الاشتراك في الباقة العادية لتطبيق TikTok Games بقيمة 20$ للتفعيل، ثم 10$ شهرياً للتجديد."
+      : "Hello, I would like to subscribe to the Regular Plan for TikTok Games for $20 activation, then $10/month for renewal.";
   } else if (planType === 'premium') {
     message = currentLanguage === 'ar'
-      ? "مرحباً، أود الاشتراك في الباقة المميزة (VIP) لتطبيق TikTok Games بقيمة 30 دولار (اشتراك لمرة واحدة مدى الحياة) لتجربة آخر الألعاب المضافة فوراً."
-      : "Hello, I would like to subscribe to the Premium Plan (VIP) for TikTok Games for 30 USD (One-time payment) to try the latest games immediately.";
+      ? "مرحباً، أود الاشتراك في الباقة المميزة (VIP) لتطبيق TikTok Games بقيمة 30$ للتفعيل، ثم 10$ شهرياً للتجديد."
+      : "Hello, I would like to subscribe to the Premium Plan (VIP) for TikTok Games for $30 activation, then $10/month for renewal.";
   }
   openWhatsApp(encodeURIComponent(message));
 }
