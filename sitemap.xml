@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://tikgames.site/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tikgames.site/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tikgames.site/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tikgames.site/" />
+    <image:image>
+      <image:loc>https://tikgames.site/assets/logo_box.png</image:loc>
+      <image:title>شعار Tik Games - ألعاب بث تيك توك لايف</image:title>
+      <image:caption>شعار تطبيق Tik Games الرسمي لألعاب وأدوات بث تيك توك التفاعلية</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://tikgames.site/assets/games/camelrace_poster.jpg</image:loc>
+      <image:title>ألعاب بث تيك توك لايف تفاعلية - سباق الهجن 3D</image:title>
+      <image:caption>لعبة سباق الهجن ثلاثية الأبعاد التفاعلية مع هدايا تيك توك لايف</image:caption>
+    </image:image>
+  </url>
+</urlset>

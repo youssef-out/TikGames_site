@@ -1,0 +1,11 @@
+# robots.txt for https://tikgames.site/
+User-agent: *
+Allow: /
+Allow: /assets/
+Allow: /assets/games/
+Allow: /assets/gifts/
+Allow: /assets/icons/
+
+# Host & Sitemap
+Host: https://tikgames.site
+Sitemap: https://tikgames.site/sitemap.xml
