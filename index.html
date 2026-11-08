@@ -3,631 +3,498 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TikTok Games - ألعاب تيك توك التفاعلية</title>
-  <meta name="description" content="الموقع الرسمي لتطبيق TikTok Games. منصتك المتكاملة لتشغيل وألعاب تيك توك التفاعلية للبث المباشر وزيادة المتابعين والأرباح.">
+  <title>Tik Games</title>
   
-  <!-- Browser Tab Favicon -->
-  <link rel="icon" href="assets/images/logo.png" type="image/png">
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/icon.ico">
   
-  <!-- FontAwesome for Premium Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Fonts (Apple Aesthetic: Cairo & Inter) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   
-  <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Apple Frosted Glass Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body class="font-ar">
+<body>
 
-  <!-- Background Mesh Glows -->
-  <div class="bg-glow-mesh">
-    <div class="bg-glow-1"></div>
-    <div class="bg-glow-2"></div>
-    <div class="bg-glow-3"></div>
-  </div>
+  <!-- Interactive Dot Grid Canvas (Mouse-reactive matrix) -->
+  <canvas id="dotGridCanvas" class="dot-grid-canvas"></canvas>
 
-  <!-- Header / Navigation Bar -->
-  <header>
-    <div class="container">
-      <a href="#home" class="logo">
-        <img src="assets/images/logo.png" alt="TikTok Games Logo">
-        <span>TikTok Games</span>
+  <!-- ========================================================================
+       APPLE GLASS NAVIGATION BAR
+       ======================================================================== -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="#" class="brand-wrapper">
+        <!-- PURE VECTOR LOGO MARK (NO BOX / NO BORDER) -->
+        <img src="assets/logo_mark.svg" alt="Tik Games" class="brand-logo-img">
+        <span class="brand-title">Tik Games</span>
       </a>
 
-      <!-- Navigation Menu -->
-      <nav class="nav-menu" id="nav-menu">
-        <ul class="nav-links">
-          <li><a href="#home" class="active" data-i18n="nav.home">الرئيسية</a></li>
-          <li><a href="#guide" data-i18n="nav.guide">دليل البث</a></li>
-          <li><a href="#subscriptions" data-i18n="nav.subscriptions">الاشتراكات</a></li>
-          <li><a href="#payments" data-i18n="nav.payments">طرق الدفع</a></li>
-          <li><a href="#contact" data-i18n="nav.contact">اتصل بنا</a></li>
+      <!-- Desktop Nav -->
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="#features" class="nav-link" data-i18n="nav_features">المميزات</a></li>
+          <li><a href="#games" class="nav-link" data-i18n="nav_games">الألعاب</a></li>
+          <li><a href="#pricing" class="nav-link" data-i18n="nav_pricing">الاشتراكات</a></li>
+          <li><a href="#influencers" class="nav-link" data-i18n="nav_influencers">للمؤثرين (مجاناً)</a></li>
+          <li><a href="#contact" class="nav-link" data-i18n="nav_contact">تواصل عبر واتساب</a></li>
         </ul>
-        <div class="header-actions">
-          <button id="lang-toggle" class="lang-btn"><i class="fa-solid fa-globe"></i><span>EN</span></button>
-          <a href="https://raw.githubusercontent.com/youssef-out/TikTok_App/main/TikTok%20Games%20Setup.exe" download class="btn btn-primary nav-download-btn" data-i18n="nav.download">تحميل التطبيق</a>
-        </div>
       </nav>
 
-      <!-- Hamburger button for mobile menu -->
-      <div class="menu-btn" id="menu-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
+      <!-- Action Tools -->
+      <div class="header-actions">
+        <!-- Calm Ambient Background Sound Toggle (No Emojis, Pure SVG & Equalizer) -->
+        <button id="soundToggleBtn" class="icon-glass-btn sound-ambient-btn muted" title="صوت الخلفية الهادئ (تشغيل/إيقاف)">
+          <div class="audio-bars-wrap">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+          <span class="sound-btn-text" id="soundBtnText" data-i18n="sound_btn_lbl">صوت هادئ</span>
+        </button>
+
+        <!-- Language Switcher (Vector SVG Globe Icon - Color Matched, No Emoji) -->
+        <button id="langToggleBtn" class="icon-glass-btn lang-btn" title="تبديل اللغة / Switch Language">
+          <svg class="lang-globe-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <span id="langLabel">English</span>
+        </button>
+
+        <!-- WhatsApp Beta CTA -->
+        <a href="https://wa.me/212617892238?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D9%86%D8%B3%D8%AE%D8%A9%20Beta%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20Tik%20Games" target="_blank" class="btn-whatsapp-pill">
+          <span>طلب نسخة Beta</span>
+        </a>
       </div>
     </div>
   </header>
 
-  <!-- ==========================================
-       Hero Section
-  ========================================== -->
-  <section id="home" class="hero">
-    <div class="container">
-      <div class="hero-grid">
-        
-        <!-- Hero Texts and CTA -->
-        <div class="hero-content animate-on-scroll">
-          <h1>
-            <span data-i18n="hero.title">ألعاب تيك توك التفاعلية</span>
-            <span class="accent" data-i18n="hero.highlight">ضاعف التفاعل وزد أرباحك الآن!</span>
-          </h1>
-          <p class="subtitle" data-i18n="hero.subtitle">
-            المنصة المتكاملة الأقوى لتشغيل وبث ألعاب تيك توك التفاعلية مباشرة مع المتابعين. العب، وتفاعل مع الجمهور، وحقق دخلاً مميزاً بكل سهولة وبأعلى أداء.
+  <!-- ========================================================================
+       HERO SECTION (APPLE FROSTED GLASS & BLUR)
+       ======================================================================== -->
+  <section class="hero-wrapper">
+    <div class="hero-capsule-badge">
+      <span class="live-dot"></span>
+      <span data-i18n="hero_badge">تطبيق سطح المكتب الأول لألعاب البث المباشر على تيك توك</span>
+    </div>
+
+    <h1 class="hero-main-title">
+      <span class="hero-gradient-text">Tik Games</span>
+    </h1>
+
+    <p class="hero-sub-text" data-i18n="hero_desc">
+      حوّل بث التيك توك إلى ساحة ألعاب تفاعلية ثلاثية وثنائية الأبعاد مباشرة، تجلب آلاف الداعمين واللاعبين في كل دقيقة مع تحكم سلس وتفاعل لحظي مع الهدايا.
+    </p>
+
+    <!-- Call to actions -->
+    <div class="hero-buttons-cluster">
+      <a href="https://wa.me/212617892238?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D9%86%D8%B3%D8%AE%D8%A9%20Beta%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20Tik%20Games" target="_blank" class="btn-whatsapp-pill btn-hero-large">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+        </svg>
+        <span data-i18n="hero_btn_beta">طلب نسخة Beta عبر واتساب</span>
+      </a>
+
+      <!-- Download Soon Button -->
+      <div class="btn-soon-pill btn-hero-large" title="رابط التحميل سيكون متاحاً قريباً">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        <span data-i18n="hero_btn_download">تحميل التطبيق</span>
+        <span class="tag-soon-badge">Soon</span>
+      </div>
+    </div>
+
+    <!-- Apple Showcase Glass Frame with Live Camel Race Game Preview -->
+    <div class="hero-glass-frame">
+      <div class="glass-window-bar">
+        <div class="mac-traffic-lights">
+          <span class="traffic-light traffic-close"></span>
+          <span class="traffic-light traffic-min"></span>
+          <span class="traffic-light traffic-max"></span>
+        </div>
+        <div class="frame-brand-label">Tik Games — Desktop Studio Window</div>
+        <div style="width: 50px;"></div>
+      </div>
+
+      <div class="frame-media-container">
+        <video class="frame-video" autoplay muted loop playsinline poster="assets/games/camelrace_poster.jpg">
+          <source src="assets/games/camelrace_preview.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       FEATURES SECTION (APPLE BENTO GLASS GRID - CLEAN CORE FEATURES)
+       ======================================================================== -->
+  <section class="section-container" id="features">
+    <div class="section-headline-group">
+      <span class="section-pill-tag" data-i18n="features_tag">مميزات التطبيق</span>
+      <h2 class="section-main-title" data-i18n="features_title">مصمم بأعلى معايير الأداء لصناع المحتوى</h2>
+      <p class="section-desc" data-i18n="features_desc">
+        يقدم Tik Games تجربة ثورية تجمع بين السرعة الفائقة، التصميم الزجاجي الانسيابي، والتفاعل اللحظي المباشر مع هدايا المتابعين.
+      </p>
+    </div>
+
+    <div class="bento-grid">
+      <!-- 1. TikTok Live Connect -->
+      <div class="glass-bento-card">
+        <div class="bento-icon-capsule">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+          </svg>
+        </div>
+        <h3 class="bento-card-title" data-i18n="feat_1_title">ربط مباشر مع TikTok Live</h3>
+        <p class="bento-card-desc" data-i18n="feat_1_desc">
+          اتصال آمن وفوري بمجرد إدخال اسم مستخدم حسابك (@username). بدون الحاجة لأي كلمات مرور أو تعريض حسابك للخطر.
+        </p>
+      </div>
+
+      <!-- 2. Exclusive Games Arsenal -->
+      <div class="glass-bento-card">
+        <div class="bento-icon-capsule">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="6" width="20" height="12" rx="2"/>
+            <path d="M6 12h4m-2-2v4m7-3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+          </svg>
+        </div>
+        <h3 class="bento-card-title" data-i18n="feat_2_title">ألعاب تفاعلية 3D و 2D حصرية</h3>
+        <p class="bento-card-desc" data-i18n="feat_2_desc">
+          ألعاب تفاعلية مبنية بمحركات خفيفة وسريعة، تتفاعل في الوقت الفعلي مع هدايا التيك توك وتخلق حماساً وتنافساً كبيراً في البث.
+        </p>
+      </div>
+
+      <!-- 3. AI Text To Speech -->
+      <div class="glass-bento-card">
+        <div class="bento-icon-capsule">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+            <line x1="12" y1="19" x2="12" y2="23"/>
+            <line x1="8" y1="23" x2="16" y2="23"/>
+          </svg>
+        </div>
+        <h3 class="bento-card-title" data-i18n="feat_3_title">المعلق الصوتي الذكي (AI TTS)</h3>
+        <p class="bento-card-desc" data-i18n="feat_3_desc">
+          روبوت صوتي ذكي ينطق أسماء الداعمين والتعليقات باللغة العربية الفصحى واللهجات فور وصول الهدية مع نظام فلترة تلقائي.
+        </p>
+      </div>
+
+      <!-- 4. Secure Encrypted License (NO KEYAUTH MENTION) -->
+      <div class="glass-bento-card">
+        <div class="bento-icon-capsule">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+        </div>
+        <h3 class="bento-card-title" data-i18n="feat_4_title">ترخيص آمن ومشفر</h3>
+        <p class="bento-card-desc" data-i18n="feat_4_desc">
+          تفعيل رقمي فوري مشفر ومحمي برقم عتاد الجهاز، يضمن استقرار البرنامج وتلقي التحديثات والتحسينات الدورية باستمرار.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       GAMES SECTION (CAMEL RACE COMPLETED, OTHER 4 BLURRED + SOON)
+       ======================================================================== -->
+  <section class="section-container" id="games">
+    <div class="section-headline-group">
+      <span class="section-pill-tag" data-i18n="games_tag">الألعاب التفاعلية</span>
+      <h2 class="section-main-title" data-i18n="games_title">ألعاب البث المباشر التفاعلية</h2>
+      <p class="section-desc" data-i18n="games_desc">
+        لعبة سباق الهجن ثلاثية الأبعاد مكتملة ومتاحة حالياً، وبقية الألعاب يجري تجهيزها وستتوفر قريباً!
+      </p>
+    </div>
+
+    <div class="games-showcase-row">
+      <!-- 1. Camel Race 3D (COMPLETED & READY NOW) -->
+      <div class="game-glass-card is-ready">
+        <div class="game-card-poster-wrap">
+          <img src="assets/games/camelrace_poster.jpg" alt="سباق الهجن" class="game-card-poster">
+          <span class="game-type-pill">3D WebGL</span>
+          <span class="game-ready-badge-pill" data-i18n="badge_ready">مكتملة ومتاحة الآن</span>
+        </div>
+        <div class="game-card-body">
+          <h3 class="game-card-title">سباق الهجن <span dir="ltr">(3D)</span></h3>
+          <p class="game-card-text" data-i18n="game_camel_desc">
+            سباق هجن خليجي أصيل ثلاثي الأبعاد بمحرك Three.js، مع سيارات الدفع الرباعي 4x4 للسحب والرمال المتحركة والعواصف الرملية عند إرسال الهدايا.
           </p>
-          <div class="hero-actions">
-            <a href="https://raw.githubusercontent.com/youssef-out/TikTok_App/main/TikTok%20Games%20Setup.exe" download class="btn btn-primary">
-              <i class="fa-solid fa-download"></i>
-              <span data-i18n="hero.downloadBtn">تحميل التطبيق الآن</span>
-            </a>
-            <a href="#guide" class="btn btn-secondary">
-              <i class="fa-solid fa-circle-play"></i>
-              <span data-i18n="hero.guideBtn">مشاهدة دليل البدء</span>
-            </a>
-          </div>
-          <div class="hero-stats">
-            <div class="stat-item">
-              <span class="stat-val" data-i18n="hero.stats.users.val">+50</span>
-              <span class="stat-label" data-i18n="hero.stats.users.lbl">مستخدم نشط</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-val" data-i18n="hero.stats.earnings.val">+50$</span>
-              <span class="stat-label" data-i18n="hero.stats.earnings.lbl">أرباح يومية</span>
-            </div>
+        </div>
+      </div>
+
+      <!-- 2. Clasico Battle 2D (BLURRED + SOON - CAR DUEL OF BACKERS) -->
+      <div class="game-glass-card is-soon">
+        <div class="game-card-poster-wrap">
+          <img src="assets/games/clasico_poster.png" alt="معركة الكلاسيكو" class="game-card-poster">
+          <span class="game-type-pill">2D Battle</span>
+          <div class="game-soon-overlay">
+            <span class="game-soon-badge-pill" data-i18n="badge_soon">قريباً • Soon</span>
           </div>
         </div>
-
-        <!-- App Window Mockup (Matches actual app screenshots) -->
-        <div class="hero-visual animate-on-scroll delay-2">
-          <div class="app-window-mockup">
-            <!-- App Header (Persistent) -->
-            <div class="app-header-bar">
-              <div class="app-logo-area">
-                <img src="assets/images/logo.png" alt="TikTok Games Logo">
-                <span class="app-title">TikTok Games</span>
-              </div>
-              <div class="app-window-controls">
-                <span class="app-lang-indicator" data-i18n="app.lang">AR</span>
-                <span class="app-control-btn"><i class="fa-solid fa-minus"></i></span>
-                <span class="app-control-btn"><i class="fa-solid fa-xmark"></i></span>
-              </div>
-            </div>
-
-            <!-- App Screens Container -->
-            <div class="app-screens-wrapper">
-              
-              <!-- Screen 1: Login Screen -->
-              <div class="app-screen app-screen-login active" id="app-screen-login">
-                <div class="app-login-brand-logo">
-                  <div class="app-brand-circle-glow">
-                    <img src="assets/images/logo.png" alt="TikTok Games Logo">
-                  </div>
-                </div>
-                <h1 class="app-login-brand-title">TIKTOK GAMES</h1>
-                <p class="app-login-brand-subtitle" data-i18n="app.logoSubtitle">TikTok LIVE Multi-Game Platform</p>
-
-                <!-- Tabs (User Login / License Key) -->
-                <div class="app-login-tabs">
-                  <div class="app-tab active" data-i18n="app.tab.login">User Login</div>
-                  <div class="app-tab" data-i18n="app.tab.license">License Key</div>
-                </div>
-
-                <!-- Form Inputs -->
-                <div class="app-login-form">
-                  <div class="app-input-field">
-                    <span class="app-input-placeholder" data-i18n="app.input.username">Username</span>
-                  </div>
-                  <div class="app-input-field">
-                    <span class="app-input-placeholder" data-i18n="app.input.password">Password</span>
-                  </div>
-                  <button class="app-login-submit-btn" data-i18n="app.btn.login">Login</button>
-                </div>
-
-                <!-- Buy License Link -->
-                <div class="app-buy-license-area">
-                  <a href="#subscriptions" class="app-buy-license-link">
-                    <i class="fa-solid fa-phone"></i>
-                    <span data-i18n="app.link.buyLicense">Buy New License</span>
-                  </a>
-                </div>
-              </div>
-
-              <!-- Screen 2: Game Selection Screen -->
-              <div class="app-screen app-screen-games" id="app-screen-games">
-                <!-- Select Game Title -->
-                <div class="app-select-game-title">
-                  <h2 data-i18n="app.title">Select Game</h2>
-                  <p data-i18n="app.subtitle">Get ready for the live stream</p>
-                </div>
-
-                <!-- Subscription Info Badge -->
-                <div class="app-subscription-box">
-                  <span class="app-sub-label" data-i18n="app.subPlan">Subscription Plan:</span>
-                  <span class="app-sub-val" data-i18n="app.subSpecial">SPECIAL</span>
-                </div>
-
-                <!-- App Games Grid (2x2) -->
-                <div class="app-games-grid">
-
-                  <!-- Game 1: Horse Racing -->
-                  <div class="app-game-card">
-                    <div class="app-game-icon horse-icon">
-                      <i class="fa-solid fa-horse"></i>
-                    </div>
-                    <span class="app-game-name" data-i18n="app.game.horse">Horse Racing</span>
-                  </div>
-
-                  <!-- Game 2: Football Challenge -->
-                  <div class="app-game-card">
-                    <div class="app-game-icon football-icon">
-                      <i class="fa-solid fa-futbol"></i>
-                    </div>
-                    <span class="app-game-name" data-i18n="app.game.football">Football Challenge</span>
-                  </div>
-
-                  <!-- Game 3: Rocket Race -->
-                  <div class="app-game-card">
-                    <div class="app-game-icon rocket-icon">
-                      <i class="fa-solid fa-rocket"></i>
-                    </div>
-                    <span class="app-game-name" data-i18n="app.game.rocket">Rocket Race</span>
-                  </div>
-
-                  <!-- Game 4: Formula 1 Race -->
-                  <div class="app-game-card">
-                    <div class="app-game-badge-wrap">
-                      <span class="app-badge app-badge-new" data-i18n="app.badge.new">NEW</span>
-                      <span class="app-badge app-badge-special" data-i18n="app.badge.special">SPECIAL</span>
-                    </div>
-                    <div class="app-game-icon formula-icon">
-                      <i class="fa-solid fa-flag-checkered"></i>
-                    </div>
-                    <span class="app-game-name" data-i18n="app.game.formula">Formula 1 Race</span>
-                  </div>
-
-                </div>
-
-                <!-- Logout Button -->
-                <button class="app-logout-btn" data-i18n="app.logout">Logout</button>
-                <!-- Version -->
-                <div class="app-version-label" data-i18n="app.version">VERSION 1.4.5</div>
-              </div>
-
-            </div>
-
-          </div>
-          <div class="visual-circles"></div>
+        <div class="game-card-body">
+          <h3 class="game-card-title">معركة الكلاسيكو <span dir="ltr">(2D)</span></h3>
+          <p class="game-card-text" data-i18n="game_clasico_desc">
+            نزال وتحدي سيارة برشلونة ضد ريال مدريد، في مواجهة ملحمية لمعرفة من صاحب الداعمين الأقوى في البث!
+          </p>
         </div>
+      </div>
 
+      <!-- 3. Stack Ball 3D (BLURRED + SOON) -->
+      <div class="game-glass-card is-soon">
+        <div class="game-card-poster-wrap">
+          <img src="assets/games/stackball_poster.jpg" alt="برج ستاك بول" class="game-card-poster">
+          <span class="game-type-pill">3D Spiral</span>
+          <div class="game-soon-overlay">
+            <span class="game-soon-badge-pill" data-i18n="badge_soon">قريباً • Soon</span>
+          </div>
+        </div>
+        <div class="game-card-body">
+          <h3 class="game-card-title">برج ستاك بول الحلزوني <span dir="ltr">(3D)</span></h3>
+          <p class="game-card-text" data-i18n="game_stackball_desc">
+            تحطيم الحلقات الحلزونية بالفيزياء ثلاثية الأبعاد، هدايا الداعمين تفعّل دروع الحماية وتضاعف سرعة هبوط الكرة الصاروخي.
+          </p>
+        </div>
+      </div>
+
+      <!-- 4. Stack Box 3D (BLURRED + SOON) -->
+      <div class="game-glass-card is-soon">
+        <div class="game-card-poster-wrap">
+          <img src="assets/games/stackbox_poster.jpg" alt="برج الصناديق" class="game-card-poster">
+          <span class="game-type-pill">3D Tower</span>
+          <div class="game-soon-overlay">
+            <span class="game-soon-badge-pill" data-i18n="badge_soon">قريباً • Soon</span>
+          </div>
+        </div>
+        <div class="game-card-body">
+          <h3 class="game-card-title">برج الصناديق المتأرجح <span dir="ltr">(3D)</span></h3>
+          <p class="game-card-text" data-i18n="game_stackbox_desc">
+            برج صناديق ديناميكي متأرجح يطبع اسم كل داعم وصورته على الصندوق الخاص به مع خط فوز ذكي متفاعل.
+          </p>
+        </div>
+      </div>
+
+      <!-- 5. Hill Climb 2D (BLURRED + SOON) -->
+      <div class="game-glass-card is-soon">
+        <div class="game-card-poster-wrap">
+          <img src="assets/games/hillclimb_poster.jpg" alt="تسلق التلال" class="game-card-poster">
+          <span class="game-type-pill">2D Physics</span>
+          <div class="game-soon-overlay">
+            <span class="game-soon-badge-pill" data-i18n="badge_soon">قريباً • Soon</span>
+          </div>
+        </div>
+        <div class="game-card-body">
+          <h3 class="game-card-title">تسلق التلال الوعرة <span dir="ltr">(2D)</span></h3>
+          <p class="game-card-text" data-i18n="game_hillclimb_desc">
+            فيزياء تعليق واقعية ونظام وقود وصواريخ نيترو، المتابعون يرمون صخوراً معرقلة أو يزودون السيارة بالبنزين.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ==========================================
-       Guide & Required Tools Section
-  ========================================== */ -->
-  <section id="guide" class="guide">
-    <div class="container">
-      <div class="section-header animate-on-scroll">
-        <h2 data-i18n="guide.title">دليل البث وكيفية البدء</h2>
-        <p data-i18n="guide.subtitle">شاهد فيديو الشرح وتعرف على الأدوات والبرامج التي تحتاجها لتشغيل ألعاب تيك توك والبدء في البث المباشر باحترافية.</p>
-      </div>
-
-      <div class="video-container glass-card animate-on-scroll" style="width: 100%; max-width: 1000px; margin: 0 auto 48px;">
-        <div class="video-wrapper">
-          <!-- Local Video Tag playing localized tutorial video -->
-          <video id="tutorial-video" controls style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; border: 0; display: block; object-fit: cover;">
-            <source id="video-source" src="assets/videos/tutorial arabic edition.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-          
-          <!-- Premium Cinematic Poster Overlay -->
-          <div id="video-poster" class="video-custom-poster">
-            <!-- Deep atmosphere glows -->
-            <div class="poster-glow-1"></div>
-            <div class="poster-glow-2"></div>
-            <div class="poster-glow-3"></div>
-            <!-- Animated scan line overlay -->
-            <div class="poster-scanlines"></div>
-            <!-- Decorative corner accents -->
-            <div class="poster-corner poster-corner-tl"></div>
-            <div class="poster-corner poster-corner-tr"></div>
-            <div class="poster-corner poster-corner-bl"></div>
-            <div class="poster-corner poster-corner-br"></div>
-            <!-- Content -->
-            <div class="poster-content">
-              <img src="assets/images/logo.png" alt="Logo" class="poster-logo">
-              <div class="poster-badge" data-i18n="guide.title">دليل البث وكيفية البدء</div>
-              <h3 class="poster-title" data-i18n="video.poster.title">دليل البث المباشر</h3>
-              <!-- Play button with pulse rings -->
-              <div class="poster-play-wrap">
-                <div class="poster-ring poster-ring-1"></div>
-                <div class="poster-ring poster-ring-2"></div>
-                <button class="poster-play-btn" aria-label="Play Tutorial Video">
-                  <i class="fa-solid fa-play"></i>
-                </button>
-              </div>
-              <p class="poster-hint" data-i18n="video.poster.hint">اضغط للمشاهدة</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Required Tools Area (3 columns grid underneath) -->
-      <div class="tools-grid animate-on-scroll">
-        
-        <!-- Tool 1: TikTok Live Studio -->
-        <div class="tool-card glass-card">
-          <div class="tool-icon">
-            <i class="fa-solid fa-desktop"></i>
-          </div>
-          <div class="tool-info">
-            <h3 data-i18n="tool.studio.title">تطبيق TikTok Live Studio</h3>
-            <p data-i18n="tool.studio.desc" style="margin-bottom: 16px;">البرنامج الرسمي من تيك توك للبث من الكمبيوتر. يوفر توافقاً ممتازاً مع ألعابنا.</p>
-            <a href="https://www.tiktok.com/studio/download" target="_blank" class="btn btn-secondary btn-sm" style="padding: 8px 16px; font-size: 0.85rem; width: 100%; text-align: center; justify-content: center; gap: 8px;">
-              <i class="fa-solid fa-up-right-from-square"></i>
-              <span data-i18n="tool.studio.btn">انتقل لصفحة تحميل التطبيق الرسمية</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Tool 2: Strong Internet -->
-        <div class="tool-card glass-card">
-          <div class="tool-icon">
-            <i class="fa-solid fa-wifi"></i>
-          </div>
-          <div class="tool-info">
-            <h3 data-i18n="tool.internet.title">اتصال إنترنت قوي (نت قوي)</h3>
-            <p data-i18n="tool.internet.desc">سرعة اتصال ورفع ممتازة لضمان عدم حدوث أي انقطاع أو بطء استجابة لأفعال المتابعين في الألعاب.</p>
-          </div>
-        </div>
-
-        <!-- Tool 3: Hype Music -->
-        <div class="tool-card glass-card">
-          <div class="tool-icon">
-            <i class="fa-solid fa-music"></i>
-          </div>
-          <div class="tool-info">
-            <h3 data-i18n="tool.pc.title">موسيقى حماسية للتفاعل</h3>
-            <p data-i18n="tool.pc.desc">تساعد على إزالة الملل والحفاظ على انتباه وتركيز المشاهدين والمتابعين طوال البث المباشر.</p>
-          </div>
-        </div>
-
-      </div>
+  <!-- ========================================================================
+       PRICING & SUBSCRIPTION SECTION (CLEAN CONTEXT - NO OVERLAY, NO TIMER, NO MINECRAFT)
+       ======================================================================== -->
+  <section class="section-container" id="pricing">
+    <div class="section-headline-group">
+      <span class="section-pill-tag" data-i18n="pricing_tag">باقات الاشتراك</span>
+      <h2 class="section-main-title" data-i18n="pricing_title">اختر خطة الاشتراك المناسبة لبثك</h2>
+      <p class="section-desc" data-i18n="pricing_desc">
+        اشتراكات مرنة تناسب الستريمرز، مع اشتراك مجاني كامل مخصص للمؤثرين وصناع المحتوى.
+      </p>
     </div>
-  </section>
 
-  <!-- ==========================================
-       Subscriptions Section
-  ========================================== -->
-  <section id="subscriptions" class="subscriptions">
-    <div class="container">
-      <div class="section-header animate-on-scroll">
-        <h2 data-i18n="subs.title">باقات الاشتراك في التطبيق</h2>
-        <p data-i18n="subs.subtitle">اختر الباقة المناسبة لاهتماماتك وابدأ في تقديم تجربة لعب استثنائية لمتابعيك.</p>
-      </div>
+    <div class="pricing-grid">
+      <!-- 1. Monthly Pass -->
+      <div class="pricing-glass-card">
+        <div>
+          <h3 class="pricing-tier-name" data-i18n="tier_monthly_title">الاشتراك الشهري</h3>
+          <p class="pricing-tier-desc" data-i18n="tier_monthly_desc">مثالي للبدء وتجربة قوة ألعاب البث التفاعلي على حسابك.</p>
+          <div class="pricing-price-wrap">
+            <span class="price-number">$19</span>
+            <span class="price-period">/ شهر</span>
+          </div>
 
-      <div class="subs-grid">
-        
-        <!-- Regular Member Subscription -->
-        <div class="sub-card glass-card regular animate-on-scroll">
-          <div class="sub-name" data-i18n="subs.regular.name">الاشتراك العادي (عضو)</div>
-          <div class="sub-price">
-            <span class="price-num" data-i18n="subs.regular.price">20</span>
-            <span class="price-currency" data-i18n="subs.currency">دولار / البداية</span>
-          </div>
-          <div class="sub-renewal">
-            <i class="fa-solid fa-rotate"></i>
-            <span data-i18n="subs.renewal">10$ / شهرياً عند التجديد</span>
-          </div>
-          <p class="sub-desc" data-i18n="subs.regular.desc">باقة اقتصادية مناسبة للمبتدئين لاستكشاف المنصة وتجربة الألعاب الأساسية.</p>
-          <ul class="sub-features">
-            <li><i class="fa-solid fa-circle-check"></i><span data-i18n="subs.regular.f1">وصول للألعاب الأساسية والتفاعلية</span></li>
-            <li><i class="fa-solid fa-circle-check"></i><span data-i18n="subs.regular.f2">صلاحيات وتحكم محدود بالألعاب</span></li>
-            <li><i class="fa-solid fa-circle-check"></i><span data-i18n="subs.regular.f3">دعم فني عبر الواتساب</span></li>
-            <li><i class="fa-solid fa-circle-check"></i><span data-i18n="subs.regular.f4">تحديثات دورية مجدولة للألعاب</span></li>
-            <li class="disabled"><i class="fa-solid fa-circle-xmark"></i><span data-i18n="subs.premium.f1">تجربة آخر الألعاب المضافة فوراً وبلا انتظار</span></li>
+          <ul class="pricing-features-list">
+            <li class="pricing-feature-item">
+              <span class="feature-check-icon">✓</span>
+              <span data-i18n="plan_m_1">فتح لعبة سباق الهجن 3D المكتملة</span>
+            </li>
+            <li class="pricing-feature-item">
+              <span class="feature-check-icon">✓</span>
+              <span data-i18n="plan_m_2">ربط فوري ومباشر بحساب TikTok Live</span>
+            </li>
+            <li class="pricing-feature-item">
+              <span class="feature-check-icon">✓</span>
+              <span data-i18n="plan_m_3">تفاعل لحظي مع الهدايا بدون تأخير</span>
+            </li>
+            <li class="pricing-feature-item">
+              <span class="feature-check-icon">✓</span>
+              <span data-i18n="plan_m_4">تحديثات دورية مجانية للألعاب</span>
+            </li>
+            <li class="pricing-feature-item">
+              <span class="feature-check-icon">✓</span>
+              <span data-i18n="plan_m_5">دعم فني وتفعيل سريع عبر واتساب</span>
+            </li>
           </ul>
-          <button onclick="subscribe('regular')" class="btn btn-secondary sub-btn" data-i18n="subs.regular.btn">اشترك كعضو عادي</button>
         </div>
 
-        <!-- Premium VIP Subscription -->
-        <div class="sub-card glass-card premium animate-on-scroll delay-2">
-          <div class="premium-tag badge badge-premium" data-i18n="subs.premium.recommended">موصى به</div>
-          <div class="sub-name" data-i18n="subs.premium.name">الاشتراك المميز (مميز)</div>
-          <div class="sub-price">
-            <span class="price-num" data-i18n="subs.premium.price">30</span>
-            <span class="price-currency" data-i18n="subs.currency">دولار / البداية</span>
+        <div class="pricing-card-action">
+          <a href="https://wa.me/212617892238?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D8%A7%D9%84%D8%B4%D9%87%D8%B1%D9%8A%20%D9%84%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20Tik%20Games" target="_blank" class="btn-apple-primary">
+            <span>طلب الاشتراك عبر واتساب</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 2. Influencer Free Tier (ROYAL BLUE VIP HIGHLIGHT - ZERO GREEN) -->
+      <div class="pricing-glass-card highlight-influencer" id="influencers">
+        <span class="pricing-badge-corner" data-i18n="badge_creators">عرض خاص للمؤثرين</span>
+        <div>
+          <h3 class="pricing-tier-name" style="color: var(--accent-top);" data-i18n="tier_inf_title">اشتراك مجاني للمؤثرين</h3>
+          <p class="pricing-tier-desc" data-i18n="tier_inf_desc">متاح مجاناً 100% لأصحاب قنوات التيك توك والستريمرز النشطين.</p>
+          <div class="pricing-price-wrap">
+            <span class="price-number price-free">مجاناً</span>
+            <span class="price-period">(Free 100%)</span>
           </div>
-          <div class="sub-renewal premium-renewal">
-            <i class="fa-solid fa-rotate"></i>
-            <span data-i18n="subs.renewal">10$ / شهرياً عند التجديد</span>
-          </div>
-          <p class="sub-desc" data-i18n="subs.premium.desc">الباقة الأقوى للمحترفين الراغبين بأعلى درجات التفاعل والحصول على كل الميزات فوراً.</p>
-          <ul class="sub-features">
-            <li><i class="fa-solid fa-star" style="color: var(--secondary);"></i><span data-i18n="subs.premium.f1" style="font-weight: 700; color: #fff;">تجربة آخر الألعاب المضافة فوراً وبلا انتظار</span></li>
-            <li><i class="fa-solid fa-circle-check"></i><span data-i18n="subs.premium.f2">صلاحيات كاملة وغير محدودة للتحكم والإعدادات</span></li>
-            <li><i class="fa-solid fa-circle-check"></i><span data-i18n="subs.premium.f3">ألعاب حصرية لكبار الشخصيات (VIP)</span></li>
-            <li><i class="fa-solid fa-circle-check"></i><span data-i18n="subs.premium.f4">أولوية الدعم الفني الخاص والمباشر عبر الواتساب</span></li>
-            <li><i class="fa-solid fa-circle-check"></i><span data-i18n="subs.premium.f5">أداء أسرع وسيرفرات مخصصة للألعاب الكبيرة</span></li>
+
+          <ul class="pricing-features-list">
+            <li class="pricing-feature-item">
+              <span class="feature-check-icon vip">★</span>
+              <span><strong data-i18n="plan_inf_1">ترخيص مجاني كامل مدى الحياة للمؤثرين</strong></span>
+            </li>
+            <li class="pricing-feature-item">
+              <span class="feature-check-icon vip">✓</span>
+              <span data-i18n="plan_inf_2">فتح كافة الألعاب الحالية والمستقبلية فور صدورها</span>
+            </li>
+            <li class="pricing-feature-item">
+              <span class="feature-check-icon vip">✓</span>
+              <span data-i18n="plan_inf_3">المعلق الصوتي الذكي AI TTS مفتوح بالكامل</span>
+            </li>
+            <li class="pricing-feature-item">
+              <span class="feature-check-icon vip">✓</span>
+              <span data-i18n="plan_inf_4">ربط مباشر وتفاعل فوري مع هدايا البث</span>
+            </li>
+            <li class="pricing-feature-item">
+              <span class="feature-check-icon vip">✓</span>
+              <span data-i18n="plan_inf_5">دعم مباشر وأولوية في تخصيص الألعاب للبث</span>
+            </li>
           </ul>
-          <button onclick="subscribe('premium')" class="btn btn-premium sub-btn" data-i18n="subs.premium.btn">اشترك كعضو مميز</button>
         </div>
 
+        <div class="pricing-card-action">
+          <a href="https://wa.me/212617892238?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A7%D9%86%D8%A7%20%D8%B5%D8%A7%D9%86%D8%B9%20%D9%85%D8%AD%D8%AA%D9%88%D9%89%20%D9%88%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%AD%D8%B5%D9%88%D9%84%20%D8%B9%D9%84%D9%89%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D8%A7%D9%84%D9%85%D8%AC%D8%A7%D9%86%D9%8A%20%D8%A7%D9%84%D8%AE%D8%A7%D8%B5%20%D8%A8%D8%A7%D9%84%D9%85%D8%A4%D8%AB%D8%B1%D9%8A%D9%86%20%D9%84%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20Tik%20Games" target="_blank" class="btn-whatsapp-pill">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+            </svg>
+            <span>احصل على نسختك المجانية عبر واتساب</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 3. Yearly Pass -->
+      <div class="pricing-glass-card">
+        <div>
+          <h3 class="pricing-tier-name" data-i18n="tier_yearly_title">الاشتراك السنوي</h3>
+          <p class="pricing-tier-desc" data-i18n="tier_yearly_desc">الخيار الاحترافي للستريمرز الدائمين الذين يبثون يومياً.</p>
+          <div class="pricing-price-wrap">
+            <span class="price-number">$99</span>
+            <span class="price-period">/ سنة</span>
+          </div>
+
+          <ul class="pricing-features-list">
+            <li class="pricing-feature-item">
+              <span class="feature-check-icon">✓</span>
+              <span data-i18n="plan_y_1">ترخيص كامل لمدة سنة كاملة مع توفير 55%</span>
+            </li>
+            <li class="pricing-feature-item">
+              <span class="feature-check-icon">✓</span>
+              <span data-i18n="plan_y_2">كافة الألعاب التفاعلية + التحديثات الدورية</span>
+            </li>
+            <li class="pricing-feature-item">
+              <span class="feature-check-icon">✓</span>
+              <span data-i18n="plan_y_3">المعلق الصوتي الذكي AI TTS بدون حدود</span>
+            </li>
+            <li class="pricing-feature-item">
+              <span class="feature-check-icon">✓</span>
+              <span data-i18n="plan_y_4">تفعيل ترخيص رقمي آمن ومشفر</span>
+            </li>
+            <li class="pricing-feature-item">
+              <span class="feature-check-icon">✓</span>
+              <span data-i18n="plan_y_5">أولوية قصوى في الدعم المباشر على مدار الساعة</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="pricing-card-action">
+          <a href="https://wa.me/212617892238?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D8%A7%D9%84%D8%B3%D9%86%D9%88%D9%8A%20%D9%84%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20Tik%20Games" target="_blank" class="btn-apple-primary">
+            <span>طلب الاشتراك عبر واتساب</span>
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ==========================================
-       Payment Methods Section
-  ========================================== -->
-  <section id="payments" class="payments">
-    <div class="container">
-      <div class="section-header animate-on-scroll">
-        <h2 data-i18n="pay.title">طرق الدفع المقبولة</h2>
-        <p data-i18n="pay.subtitle">لتسهيل الاشتراك، نوفر خيارات دفع آمنة وسريعة للمستخدمين داخل المغرب وعالمياً.</p>
+  <!-- ========================================================================
+       WHATSAPP & BETA REQUEST DIRECT BANNER
+       ======================================================================== -->
+  <section class="section-container" id="contact" style="padding-top: 2rem; padding-bottom: 5rem;">
+    <div class="contact-glass-banner">
+      <div class="contact-phone-badge">
+        <span>WhatsApp:</span>
+        <span>+212617892238</span>
       </div>
 
-      <div class="payment-columns">
-        
-        <!-- Moroccan Payment Methods (Local) -->
-        <div class="animate-on-scroll">
-          <h3 class="pay-group-title">
-            <i class="fa-solid fa-wallet"></i>
-            <span data-i18n="pay.morocco">داخل المغرب (محلياً)</span>
-          </h3>
-          <div class="payment-grid">
-            
-            <div class="pay-card glass-card cih">
-              <div class="pay-card-header">
-                <div class="pay-brand">
-                  <div class="pay-icon-box">CIH</div>
-                  <span class="pay-name" data-i18n="pay.cih.name">بنك CIH Bank</span>
-                </div>
-                <span class="pay-tag" data-i18n="pay.morocco">تفعيل فوري</span>
-              </div>
-              <p data-i18n="pay.cih.desc">تحويل بنكي مباشر وسريع لحسابنا في بنك CIH. مناسب جداً لمستخدمي التطبيق البنكي لتفعيل فوري بدون رسوم تحويل.</p>
-              <button onclick="requestPaymentDetails()" class="btn btn-secondary btn-sm" style="align-self: flex-start; padding: 8px 16px; font-size: 0.85rem;" data-i18n="pay.getDetails">طلب بيانات الدفع</button>
-            </div>
+      <h2 style="font-size: 2.2rem; font-weight: 900; color: #fff; margin-bottom: 0.8rem;" data-i18n="contact_title">
+        طلب نسخة Beta أو الاستفسار عن الاشتراكات
+      </h2>
 
-            <div class="pay-card glass-card cashplus">
-              <div class="pay-card-header">
-                <div class="pay-brand">
-                  <div class="pay-icon-box">C+</div>
-                  <span class="pay-name" data-i18n="pay.cashplus.name">كاش بلص (CashPlus)</span>
-                </div>
-                <span class="pay-tag" data-i18n="pay.morocco">كاش</span>
-              </div>
-              <p data-i18n="pay.cashplus.desc">إرسال حوالة نقدية فورية عبر أي فرع كاش بلص في المغرب. تواصل معنا لتزويدك ببيانات المستلم الكاش.</p>
-              <button onclick="requestPaymentDetails()" class="btn btn-secondary btn-sm" style="align-self: flex-start; padding: 8px 16px; font-size: 0.85rem;" data-i18n="pay.getDetails">طلب بيانات الدفع</button>
-            </div>
+      <p style="font-size: 1.05rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 2.2rem; line-height: 1.7;" data-i18n="contact_sub">
+        لطلب تجربة النسخة التجريبية (Beta) أو الحصول على كود التفعيل والاشتراك المجاني للمؤثرين، تواصل معنا مباشرة عبر محادثة واتساب.
+      </p>
 
-            <div class="pay-card glass-card">
-              <div class="pay-card-header">
-                <div class="pay-brand">
-                  <div class="pay-icon-box"><i class="fa-solid fa-bank"></i></div>
-                  <span class="pay-name" data-i18n="pay.transfer.name">تحويل بنكي (Bank Transfer)</span>
-                </div>
-                <span class="pay-tag" data-i18n="pay.morocco">بنوك مغربية</span>
-              </div>
-              <p data-i18n="pay.transfer.desc">إجراء تحويل (Virement) من أي بنك مغربي آخر (مثل التجاري وفا، الشعبي، إلخ) لحسابنا. التفعيل يتم فور وصول الحوالة.</p>
-              <button onclick="requestPaymentDetails()" class="btn btn-secondary btn-sm" style="align-self: flex-start; padding: 8px 16px; font-size: 0.85rem;" data-i18n="pay.getDetails">طلب بيانات الدفع</button>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- Global Payment Methods (USDT / Binance) -->
-        <div class="animate-on-scroll delay-2">
-          <h3 class="pay-group-title">
-            <i class="fa-solid fa-globe"></i>
-            <span data-i18n="pay.global">خارج المغرب (دولياً)</span>
-          </h3>
-          <div class="payment-grid">
-            
-            <div class="pay-card glass-card binance" style="height: 100%; justify-content: space-between;">
-              <div>
-                <div class="pay-card-header" style="margin-bottom: 20px;">
-                  <div class="pay-brand">
-                    <div class="pay-icon-box"><i class="fa-solid fa-coins"></i></div>
-                    <span class="pay-name" data-i18n="pay.binance.name">تحويل باينانس (Binance Transfer)</span>
-                  </div>
-                  <span class="pay-tag" data-i18n="pay.global">USDT / Crypto</span>
-                </div>
-                <p style="margin-bottom: 24px;" data-i18n="pay.binance.desc">الدفع بعملة USDT الرقمية عبر تطبيق باينانس (Binance Pay) أو التحويل المباشر للمحفظة. الخيار الأسرع والأنسب للمشتركين خارج المغرب.</p>
-              </div>
-              <div style="background: rgba(243, 186, 47, 0.05); border: 1px solid rgba(243, 186, 47, 0.2); padding: 16px; border-radius: 12px; margin-bottom: 24px;">
-                <div style="color: #f3ba2f; font-weight: 700; font-size: 0.9rem; margin-bottom: 6px;">
-                  <i class="fa-solid fa-shield-halved"></i> <span data-i18n="pay.binance.secure">آمن وسريع 100%</span>
-                </div>
-                <div style="font-size: 0.85rem; color: var(--text-muted);" data-i18n="pay.binance.secureDesc">
-                  نقبل USDT (شبكة TRC-20) لتجنب الرسوم العالية وتفعيل الحساب خلال دقائق فقط من عملية التحويل.
-                </div>
-              </div>
-              <button onclick="requestPaymentDetails()" class="btn btn-premium trigger-pay" style="width: 100%;" data-i18n="pay.getDetails">طلب بيانات الدفع</button>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
+      <a href="https://wa.me/212617892238?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D9%86%D8%B3%D8%AE%D8%A9%20Beta%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20Tik%20Games" target="_blank" class="btn-whatsapp-pill btn-hero-large">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+        </svg>
+        <span data-i18n="contact_btn">مراسلتنا فوراً عبر واتساب</span>
+      </a>
     </div>
   </section>
 
-  <!-- ==========================================
-       Contact Section & Form
-  ========================================== -->
-  <section id="contact" class="contact">
-    <div class="container">
-      <div class="section-header animate-on-scroll">
-        <h2 data-i18n="contact.title">تواصل معنا مباشرة</h2>
-        <p data-i18n="contact.subtitle">لديك استفسار حول التطبيق أو طريقة التشغيل؟ أو تريد إرسال لقطة شاشة التحويل لتفعيل اشتراكك؟ راسلنا الآن.</p>
+  <!-- ========================================================================
+       APPLE MINIMALIST FOOTER
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <!-- PURE VECTOR LOGO MARK (NO BOX / NO BORDER) -->
+        <img src="assets/logo_mark.svg" alt="Tik Games">
+        <span>Tik Games</span>
       </div>
 
-      <div class="contact-container animate-on-scroll">
-        
-        <div class="contact-card glass-card">
-          <h3 data-i18n="contact.infoTitle">معلومات الاتصال</h3>
-          <div class="contact-details">
-            <div class="contact-item">
-              <i class="fa-solid fa-map-location-dot"></i>
-              <span data-i18n="contact.address">الموقع: المغرب</span>
-            </div>
-            <div class="contact-item">
-              <i class="fa-solid fa-phone-volume"></i>
-              <span data-i18n="contact.phone">الهاتف: +212 617-892238</span>
-            </div>
-          </div>
-          
-          <button onclick="contactSupport()" class="btn btn-primary whatsapp-btn">
-            <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i>
-            <span data-i18n="contact.whatsapp">راسلنا على الواتساب</span>
-          </button>
-        </div>
-
+      <div>
+        <span>© 2026 Tik Games. جميع الحقوق محفوظة.</span>
       </div>
-    </div>
-  </section>
 
-  <!-- ==========================================
-       Footer
-  ========================================== -->
-  <footer>
-    <div class="container">
-      <div class="logo" style="margin-bottom: 8px;">
-        <img src="assets/images/logo.png" alt="TikTok Games Logo" style="width: 32px; height: 32px; filter: drop-shadow(0 0 5px rgba(0, 242, 254, 0.4));">
-        <span>TikTok Games</span>
+      <div>
+        <a href="https://wa.me/212617892238" target="_blank" style="color: var(--accent-top); text-decoration: none; font-weight: 600;">
+          واتساب: +212617892238
+        </a>
       </div>
-      <p data-i18n="footer.rights">جميع الحقوق محفوظة © 2026. تطبيق TikTok Games.</p>
     </div>
   </footer>
 
-  <!-- ==========================================
-       Floating WhatsApp Widget
-  ========================================== -->
-  <div class="whatsapp-widget" onclick="contactSupport()">
-    <i class="fa-brands fa-whatsapp"></i>
-  </div>
-
-  <!-- ==========================================
-       Modal: Download Application
-  ========================================== -->
-  <div id="download-modal" class="modal-overlay">
-    <div class="modal-content glass-card">
-      <button class="close-modal" id="close-download"><i class="fa-solid fa-xmark"></i></button>
-      <div class="modal-header">
-        <h3 data-i18n="download.modal.title">تحميل تطبيق TikTok Games</h3>
-        <p data-i18n="download.modal.subtitle">اختر النسخة المتوافقة مع جهازك للبدء فوراً</p>
-      </div>
-      
-      <div class="download-options">
-        
-        <!-- Android APK option -->
-        <div class="download-option-card glass-card">
-          <div class="download-platform">
-            <div class="download-platform-icon">
-              <i class="fa-brands fa-android"></i>
-            </div>
-            <div class="download-platform-info">
-              <h4>Android (APK)</h4>
-              <p data-i18n="download.android.desc">ملف APK مخصص للهواتف الذكية وأجهزة التابلت أندرويد.</p>
-            </div>
-          </div>
-          <a href="#" class="btn btn-primary btn-sm" style="padding: 10px 18px; font-size: 0.85rem;" data-i18n="download.btn">تحميل الملف</a>
-        </div>
-
-        <!-- Windows desktop option -->
-        <div class="download-option-card glass-card">
-          <div class="download-platform">
-            <div class="download-platform-icon">
-              <i class="fa-brands fa-windows"></i>
-            </div>
-            <div class="download-platform-info">
-              <h4>Windows PC</h4>
-              <p data-i18n="download.windows.desc">برنامج تشغيل الألعاب للكمبيوتر متكامل مع OBS و Live Studio.</p>
-            </div>
-          </div>
-          <a href="https://raw.githubusercontent.com/youssef-out/TikTok_App/main/TikTok%20Games%20Setup.exe" download class="btn btn-primary btn-sm" style="padding: 10px 18px; font-size: 0.85rem;" data-i18n="download.btn">تحميل الملف</a>
-        </div>
-
-        <!-- iOS instructions option -->
-        <div class="download-option-card glass-card">
-          <div class="download-platform">
-            <div class="download-platform-icon">
-              <i class="fa-brands fa-apple"></i>
-            </div>
-            <div class="download-platform-info">
-              <h4>iOS / iPhone</h4>
-              <p data-i18n="download.ios.desc">دليل وخطوات تشغيل الألعاب على نظام iOS والآيفون.</p>
-            </div>
-          </div>
-          <button onclick="contactSupport()" class="btn btn-secondary btn-sm" style="padding: 10px 18px; font-size: 0.85rem;" data-i18n="guide.title">عرض الدليل</button>
-        </div>
-
-      </div>
-
-      <div class="modal-warning">
-        <i class="fa-solid fa-circle-exclamation"></i>
-        <p data-i18n="download.warning">تنبيه: بالنسبة لنسخة الأندرويد، يرجى تفعيل خيار "تثبيت التطبيقات من مصادر غير معروفة" من إعدادات الحماية بهاتفك لضمان التثبيت السلس.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- ==========================================
-       Modal: Payment details instructions
-  ========================================== -->
-  <div id="pay-modal" class="modal-overlay">
-    <div class="modal-content glass-card">
-      <button class="close-modal" id="close-pay"><i class="fa-solid fa-xmark"></i></button>
-      <div class="modal-header">
-        <h3 data-i18n="pay.modal.title">خطوات إتمام الدفع والتفعيل</h3>
-        <p data-i18n="pay.modal.subtitle">اتبع الإرشادات التالية لتفعيل اشتراكك بأسرع وقت ممكن:</p>
-      </div>
-
-      <div class="payment-steps">
-        <div class="step-card">
-          <div class="step-num">1</div>
-          <p data-i18n="pay.modal.step1">اختر طريقة الدفع المناسبة لك من البطاقات المعروضة.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-num">2</div>
-          <p data-i18n="pay.modal.step2">اضغط على زر (تواصل للتفعيل) أدناه وسيتم فتح محادثة واتساب معنا لتزويدك بالاسم الكامل أو رقم الحساب البنكي (RIB) أو عنوان محفظة Binance الخاص بنا.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-num">3</div>
-          <p data-i18n="pay.modal.step3">بعد قيامك بتحويل المبلغ، يرجى التقاط صورة لإيصال التحويل (Screenshot) وإرسالها لنا في الواتساب مع كتابة اسم المستخدم الخاص بك لتفعيل اشتراكك فوراً.</p>
-        </div>
-      </div>
-
-      <div class="modal-actions">
-        <button onclick="contactPaymentSupport()" class="btn btn-premium">
-          <i class="fa-brands fa-whatsapp"></i>
-          <span data-i18n="pay.modal.whatsapp">تواصل عبر الواتساب لتلقي بيانات الدفع</span>
-        </button>
-        <button class="btn btn-secondary" id="close-pay-btn" onclick="document.getElementById('pay-modal').classList.remove('active'); document.body.style.overflow = '';" data-i18n="pay.modal.close">إغلاق النافذة</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- JS Files -->
-  <script src="assets/js/translations.js"></script>
-  <script src="assets/js/app.js"></script>
+  <!-- Interactive Script with Ambient Sound Engine -->
+  <script src="app.js"></script>
 </body>
 </html>

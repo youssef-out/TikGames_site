@@ -1,0 +1,355 @@
+/* Tik Games ? Shared Broadcast Gift Animations, Event Callouts & Post-Round Leaderboard */
+.gfx-gift-stack {
+  position: fixed;
+  top: 96px;
+  left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 45;
+  pointer-events: none;
+  width: 318px;
+}
+
+.gfx-gift-card {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 9px 13px;
+  border-radius: 99px;
+  background: linear-gradient(135deg, rgba(18, 24, 38, 0.88) 0%, rgba(12, 16, 26, 0.80) 100%);
+  backdrop-filter: blur(22px) saturate(155%);
+  -webkit-backdrop-filter: blur(22px) saturate(155%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 12px 30px rgba(0, 0, 0, 0.42);
+  animation: gfxSlideIn 0.36s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transform-origin: left center;
+}
+
+.gfx-gift-card.high-tier {
+  border-color: rgba(96, 165, 250, 0.55);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 14px 36px rgba(37, 99, 235, 0.32);
+}
+
+.gfx-gift-card.leaving {
+  animation: gfxFadeOut 0.28s ease forwards;
+}
+
+@keyframes gfxSlideIn {
+  0% { opacity: 0; transform: translateX(-46px) scale(0.88); }
+  70% { opacity: 1; transform: translateX(4px) scale(1.02); }
+  100% { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+@keyframes gfxFadeOut {
+  to { opacity: 0; transform: translateY(-10px) scale(0.94); }
+}
+
+.gfx-avatar-wrap {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  padding: 2px;
+  background: linear-gradient(135deg, #60a5fa, #3b82f6);
+  flex-shrink: 0;
+}
+
+.gfx-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #161d2b;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-weight: 800;
+  font-size: 15px;
+  font-family: 'Inter', 'Cairo', sans-serif;
+}
+
+.gfx-user-col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.gfx-nick {
+  font-size: 13px;
+  font-weight: 800;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.gfx-uid {
+  font-family: 'Inter', sans-serif;
+  font-size: 10.5px;
+  color: rgba(148, 163, 184, 0.85);
+  direction: ltr;
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.gfx-cmd-pill {
+  display: inline-block;
+  margin-top: 2px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #93c5fd;
+}
+
+.gfx-gift-visual {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.gfx-gift-icon {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.45));
+  animation: gfxGiftPop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes gfxGiftPop {
+  0% { transform: scale(0.3) rotate(-18deg); }
+  65% { transform: scale(1.22) rotate(6deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+.gfx-combo {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-style: italic;
+  font-size: 18px;
+  color: #fbbf24;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.65);
+  animation: gfxComboPulse 0.35s ease;
+}
+
+@keyframes gfxComboPulse {
+  0% { transform: scale(1.55); }
+  100% { transform: scale(1); }
+}
+
+/* Center Event Activation Callout */
+.gfx-action-spotlight {
+  position: fixed;
+  top: 86px;
+  left: 50%;
+  transform: translateX(-50%) scale(0.9);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 48;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 22px;
+  border-radius: 99px;
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.88), rgba(15, 23, 42, 0.82));
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(96, 165, 250, 0.45);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 16px 42px rgba(0, 0, 0, 0.5);
+  transition: opacity 0.24s ease, transform 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.gfx-action-spotlight.active {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+/* Confetti Canvas & Post-Round Leaderboard Modal */
+#gfxConfettiCanvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 80;
+}
+
+.gfx-leaderboard-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 8, 15, 0.62);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 85;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.gfx-leaderboard-backdrop.open {
+  display: flex;
+  animation: gfxModalFade 0.32s ease;
+}
+
+@keyframes gfxModalFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.gfx-lb-card {
+  width: 560px;
+  max-width: 95vw;
+  background: linear-gradient(180deg, rgba(22, 28, 42, 0.90) 0%, rgba(12, 16, 26, 0.88) 100%);
+  backdrop-filter: blur(28px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 28px 70px rgba(0, 0, 0, 0.65);
+  border-radius: 22px;
+  padding: 24px 26px 20px;
+  color: #f8fafc;
+  text-align: center;
+}
+
+.gfx-lb-crown {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  margin: 0 auto 6px;
+  display: block;
+  filter: drop-shadow(0 6px 18px rgba(251, 191, 36, 0.35));
+}
+
+.gfx-lb-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.gfx-lb-sub {
+  font-size: 13px;
+  color: rgba(203, 213, 225, 0.78);
+  margin-top: 3px;
+  margin-bottom: 18px;
+}
+
+.gfx-podium {
+  display: grid;
+  grid-template-columns: 1fr 1.14fr 1fr;
+  gap: 10px;
+  align-items: end;
+  margin-bottom: 16px;
+}
+
+.gfx-podium-slot {
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 16px;
+  padding: 12px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.gfx-podium-slot.rank-1 {
+  background: linear-gradient(180deg, rgba(251, 191, 36, 0.16) 0%, rgba(255, 255, 255, 0.05) 100%);
+  border-color: rgba(251, 191, 36, 0.45);
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.gfx-podium-slot.rank-2 {
+  border-color: rgba(203, 213, 225, 0.32);
+}
+
+.gfx-podium-slot.rank-3 {
+  border-color: rgba(217, 119, 6, 0.36);
+}
+
+.gfx-podium-rank {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.gfx-podium-slot.rank-1 .gfx-podium-rank {
+  background: rgba(251, 191, 36, 0.25);
+  color: #fde68a;
+}
+
+.gfx-podium-ava {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  background: #1e293b;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 17px;
+}
+
+.gfx-podium-slot.rank-1 .gfx-podium-ava {
+  width: 58px;
+  height: 58px;
+  border-color: #fbbf24;
+}
+
+.gfx-podium-name {
+  font-size: 13px;
+  font-weight: 800;
+  max-width: 130px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.gfx-podium-score {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #93c5fd;
+}
+
+.gfx-lb-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  max-height: 165px;
+  overflow-y: auto;
+  margin-bottom: 16px;
+  text-align: right;
+}
+
+.gfx-lb-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 12px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 12.5px;
+}
+
+.gfx-lb-progress {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.gfx-lb-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+  width: 100%;
+  transition: width 0.2s linear;
+}
