@@ -37,8 +37,8 @@
         <ul class="nav-menu">
           <li><a href="#features" class="nav-link" data-i18n="nav_features">المميزات</a></li>
           <li><a href="#games" class="nav-link" data-i18n="nav_games">الألعاب</a></li>
+          <li><a href="#live-demo" class="nav-link" data-i18n="nav_demo">تجربة اللعبة</a></li>
           <li><a href="#pricing" class="nav-link" data-i18n="nav_pricing">الاشتراكات</a></li>
-          <li><a href="#influencers" class="nav-link" data-i18n="nav_influencers">للمؤثرين (مجاناً)</a></li>
           <li><a href="#contact" class="nav-link" data-i18n="nav_contact">تواصل عبر واتساب</a></li>
         </ul>
       </nav>
@@ -88,6 +88,11 @@
 
     <p class="hero-sub-text" data-i18n="hero_desc">
       حوّل بث التيك توك إلى ساحة ألعاب تفاعلية ثلاثية وثنائية الأبعاد مباشرة، تجلب آلاف الداعمين واللاعبين في كل دقيقة مع تحكم سلس وتفاعل لحظي مع الهدايا.
+    </p>
+
+    <p class="hero-free-note">
+      <img src="assets/icons/star.svg" width="14" height="14" alt="">
+      <span data-i18n="hero_free">الاشتراك مجاني بالكامل للمؤثرين وصناع المحتوى</span>
     </p>
 
     <!-- Call to actions -->
@@ -298,6 +303,235 @@
             فيزياء تعليق واقعية ونظام وقود وصواريخ نيترو، المتابعون يرمون صخوراً معرقلة أو يزودون السيارة بالبنزين.
           </p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       INTERACTIVE LIVE BATTLE DEMO (TIKTOK LIVE TUG-OF-WAR GAME)
+       ======================================================================== -->
+  <section class="section-container" id="live-demo">
+    <div class="section-headline-group">
+      <span class="section-pill-tag" data-i18n="demo_tag">تجربة حية تفاعلية</span>
+      <h2 class="section-main-title" data-i18n="demo_title">جرّب تفاعل ألعاب البث المباشر بنفسك الآن</h2>
+      <p class="section-desc" data-i18n="demo_desc">
+        اضغط على الهدايا لدعم الفريق الأزرق أو الأحمر، وشاهد كيف يتفاعل شريط البث اللحظي ونقاط الداعمين بسرعة فائقة تماماً كما في بث التيك توك الحقيقي.
+      </p>
+    </div>
+
+    <!-- The Interactive Battle Arena Widget -->
+    <div class="battle-arena-card">
+      <div class="battle-top-card">
+      <!-- Ambient Team Heart Particles Canvas (Blue on left, Red on right) -->
+      <canvas id="battleHeartsCanvas" class="battle-hearts-canvas"></canvas>
+
+      <!-- Arena Header -->
+      <div class="battle-arena-header">
+        <div class="battle-live-cluster">
+          <span class="live-pill-badge">
+            <span class="live-pulsing-dot"></span>
+            LIVE
+          </span>
+          <div class="battle-viewers-count">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+            <span id="battleViewerCount">1,309</span>
+          </div>
+        </div>
+
+        <div class="battle-score-capsule">
+          <span class="score-team blue-score" id="blueScoreWins">0</span>
+          <span class="score-vs">VS</span>
+          <span class="score-team red-score" id="redScoreWins">0</span>
+        </div>
+
+        <button class="battle-restart-btn" id="battleResetBtn" title="إعادة تشغيل التحدي">
+          <img src="assets/icons/refresh.svg" alt="Reset" width="15" height="15">
+          <span data-i18n="battle_reset">جولة جديدة</span>
+        </button>
+      </div>
+
+      <!-- The Tug-of-War Battle Progress Bar -->
+      <div class="battle-progress-wrapper">
+        <div class="battle-team-indicators">
+          <div class="team-meta team-blue">
+            <span class="team-label" data-i18n="blue_team_lbl">الفريق الأزرق</span>
+          </div>
+          <div class="team-meta team-red">
+            <span class="team-label" data-i18n="red_team_lbl">الفريق الأحمر</span>
+          </div>
+        </div>
+
+        <!-- The Energy Track -->
+        <div class="battle-track-outer">
+          <div class="battle-track-blue" id="battleBlueFill" style="width: 50%;"></div>
+          <div class="battle-track-red" id="battleRedFill" style="width: 50%;"></div>
+          <!-- Center Sliding Token: Official Tik Games Logo Mark -->
+          <div class="battle-token-slider" id="battleTokenSlider" style="left: 50%;">
+            <div class="battle-logo-token-wrap" title="Tik Games Official Mark">
+              <img src="assets/logo_mark.svg" alt="Tik Games" class="battle-logo-token-img">
+            </div>
+          </div>
+        </div>
+        <div class="battle-pct-row">
+          <span class="team-pct pct-blue" id="bluePctText">50%</span>
+          <span class="team-pct pct-red" id="redPctText">50%</span>
+        </div>
+      </div>
+
+      <!-- Parallel Live Gift Stream Feeds (Blue Feed on Left, Red Feed on Right) -->
+      <div class="battle-live-feed-row parallel-feeds">
+        <!-- BLUE TEAM FEED (Left) -->
+        <div class="battle-team-feed blue-stream-feed" id="blueLiveFeed">
+          <div class="feed-pill blue-feed">
+            <span class="feed-avatar">DI</span>
+            <span class="feed-text"><strong>dilan.x</strong> sent <img src="assets/gifts/rose.webp" width="18" height="18" class="feed-gift-img" alt="rose"> <span class="feed-action">UP ×100</span></span>
+          </div>
+          <div class="feed-pill blue-feed">
+            <span class="feed-avatar">KA</span>
+            <span class="feed-text"><strong>kawa.07</strong> sent <img src="assets/gifts/rose.webp" width="18" height="18" class="feed-gift-img" alt="rose"> ×2 <span class="feed-action">UP ×100</span></span>
+          </div>
+        </div>
+
+        <!-- RED TEAM FEED (Right) -->
+        <div class="battle-team-feed red-stream-feed" id="redLiveFeed">
+          <div class="feed-pill red-feed">
+            <span class="feed-avatar">BA</span>
+            <span class="feed-text"><strong>baran.storm</strong> sent <img src="assets/gifts/ice_cream.webp" width="18" height="18" class="feed-gift-img" alt="ice cream"> <span class="feed-action">Fire</span></span>
+          </div>
+          <div class="feed-pill red-feed">
+            <span class="feed-avatar">AL</span>
+            <span class="feed-text"><strong>ali.king</strong> sent <img src="assets/gifts/tiktok.webp" width="18" height="18" class="feed-gift-img" alt="tiktok"> <span class="feed-action">DOWN ×100</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Victory Celebration Banner & Confetti (Matching Reference Screenshot cf3232a5.jpg) -->
+      <div class="battle-victory-celebration" id="battleVictoryOverlay">
+        <canvas id="victoryConfettiCanvas" class="victory-confetti-canvas"></canvas>
+        <div class="victory-banner-cluster">
+          <h2 class="victory-banner-text" id="victoryHeadline">RED TEAM WINS!</h2>
+          <button class="battle-quick-rematch-btn" id="victoryRestartBtn">
+            <img src="assets/icons/refresh.svg" width="16" height="16" alt="Restart">
+            <span data-i18n="battle_play_again">جولة جديدة • Play Again</span>
+          </button>
+        </div>
+      </div>
+      </div>
+
+      <div class="battle-bottom-card">
+      <!-- Gift Control Panels (Blue vs Red) -->
+      <div class="battle-panels-grid">
+        <!-- BLUE TEAM GIFTS -->
+        <div class="battle-team-panel blue-panel">
+          <div class="panel-header">
+            <div class="panel-title-wrap">
+              <span class="team-glow-indicator blue-indicator"></span>
+              <h4 class="panel-title" data-i18n="blue_team_lbl">BLUE TEAM</h4>
+            </div>
+            <span class="panel-hint" data-i18n="tap_gift_hint">Tap a gift</span>
+          </div>
+
+          <div class="gift-cards-grid">
+            <!-- 1. Rose -->
+            <button class="battle-gift-card" data-team="blue" data-power="4" data-gift-name="Rose" data-gift-img="assets/gifts/rose.webp" data-gift-label="UP ×100">
+              <div class="gift-icon-wrap">
+                <img src="assets/gifts/rose.webp" alt="Rose" width="34" height="34" class="gift-real-img">
+              </div>
+              <span class="gift-name" data-i18n="gift_rose">Rose</span>
+              <span class="gift-cost">● 1</span>
+              <span class="gift-buff">UP ×100</span>
+            </button>
+
+            <!-- 2. Finger Heart -->
+            <button class="battle-gift-card" data-team="blue" data-power="8" data-gift-name="Finger Heart" data-gift-img="assets/gifts/finger_heart.webp" data-gift-label="Elevator ×500">
+              <div class="gift-icon-wrap">
+                <img src="assets/gifts/finger_heart.webp" alt="Finger Heart" width="34" height="34" class="gift-real-img">
+              </div>
+              <span class="gift-name" data-i18n="gift_finger_heart">Finger Heart</span>
+              <span class="gift-cost">● 5</span>
+              <span class="gift-buff">Elevator ×500</span>
+            </button>
+
+            <!-- 3. Heart -->
+            <button class="battle-gift-card" data-team="blue" data-power="14" data-gift-name="Heart" data-gift-img="assets/gifts/heart.webp" data-gift-label="Cannon ×1,000">
+              <div class="gift-icon-wrap">
+                <img src="assets/gifts/heart.webp" alt="Heart" width="34" height="34" class="gift-real-img">
+              </div>
+              <span class="gift-name" data-i18n="gift_heart">Heart</span>
+              <span class="gift-cost">● 10</span>
+              <span class="gift-buff">Cannon ×1,000</span>
+            </button>
+
+            <!-- 4. Hand Heart -->
+            <button class="battle-gift-card" data-team="blue" data-power="22" data-gift-name="Hand Heart" data-gift-img="assets/gifts/hand_heart.webp" data-gift-label="Shield">
+              <div class="gift-icon-wrap">
+                <img src="assets/gifts/hand_heart.webp" alt="Hand Heart" width="34" height="34" class="gift-real-img">
+              </div>
+              <span class="gift-name" data-i18n="gift_hand_heart">Hand Heart</span>
+              <span class="gift-cost">● 100</span>
+              <span class="gift-buff">Shield</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- RED TEAM GIFTS -->
+        <div class="battle-team-panel red-panel">
+          <div class="panel-header">
+            <div class="panel-title-wrap">
+              <span class="team-glow-indicator red-indicator"></span>
+              <h4 class="panel-title" data-i18n="red_team_lbl">RED TEAM</h4>
+            </div>
+            <span class="panel-hint" data-i18n="tap_gift_hint">Tap a gift</span>
+          </div>
+
+          <div class="gift-cards-grid">
+            <!-- 1. TikTok -->
+            <button class="battle-gift-card" data-team="red" data-power="4" data-gift-name="TikTok" data-gift-img="assets/gifts/tiktok.webp" data-gift-label="DOWN ×100">
+              <div class="gift-icon-wrap">
+                <img src="assets/gifts/tiktok.webp" alt="TikTok" width="34" height="34" class="gift-real-img">
+              </div>
+              <span class="gift-name" data-i18n="gift_tiktok">TikTok</span>
+              <span class="gift-cost">● 1</span>
+              <span class="gift-buff">DOWN ×100</span>
+            </button>
+
+            <!-- 2. Ice Cream Cone -->
+            <button class="battle-gift-card" data-team="red" data-power="8" data-gift-name="Ice Cream Cone" data-gift-img="assets/gifts/ice_cream.webp" data-gift-label="Fire">
+              <div class="gift-icon-wrap">
+                <img src="assets/gifts/ice_cream.webp" alt="Ice Cream" width="34" height="34" class="gift-real-img">
+              </div>
+              <span class="gift-name" data-i18n="gift_icecream">Ice Cream Cone</span>
+              <span class="gift-cost">● 1</span>
+              <span class="gift-buff">Fire</span>
+            </button>
+
+            <!-- 3. Journey Pass -->
+            <button class="battle-gift-card" data-team="red" data-power="14" data-gift-name="Journey Pass" data-gift-img="assets/gifts/journey_pass.webp" data-gift-label="Upside down">
+              <div class="gift-icon-wrap">
+                <img src="assets/gifts/journey_pass.webp" alt="Journey Pass" width="34" height="34" class="gift-real-img">
+              </div>
+              <span class="gift-name" data-i18n="gift_pass">Journey Pass</span>
+              <span class="gift-cost">● 10</span>
+              <span class="gift-buff">Upside down</span>
+            </button>
+
+            <!-- 4. Money Gun -->
+            <button class="battle-gift-card" data-team="red" data-power="22" data-gift-name="Money Gun" data-gift-img="assets/gifts/money_gun.webp" data-gift-label="Lightning">
+              <div class="gift-icon-wrap">
+                <img src="assets/gifts/money_gun.webp" alt="Money Gun" width="34" height="34" class="gift-real-img">
+              </div>
+              <span class="gift-name" data-i18n="gift_money_gun">Money Gun</span>
+              <span class="gift-cost">● 500</span>
+              <span class="gift-buff">Lightning</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      
       </div>
     </div>
   </section>

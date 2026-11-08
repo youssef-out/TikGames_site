@@ -776,6 +776,841 @@ body.lang-en {
 }
 
 /* --------------------------------------------------------------------------
+   INTERACTIVE LIVE BATTLE DEMO (TIKTOK LIVE TUG-OF-WAR WIDGET)
+   -------------------------------------------------------------------------- */
+.battle-arena-card {
+  max-width: 1040px;
+  margin: 0 auto;
+  /* Distinct High-Tech Esports Arena Background (Dual Blue/Red Ambient Light + Cyber Grid) */
+  background: 
+    radial-gradient(circle at 12% 28%, rgba(37, 99, 235, 0.18) 0%, transparent 48%),
+    radial-gradient(circle at 88% 28%, rgba(225, 29, 72, 0.18) 0%, transparent 48%),
+    radial-gradient(circle at 50% 90%, rgba(15, 23, 42, 0.8) 0%, transparent 60%),
+    linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    linear-gradient(180deg, #0e1322 0%, #080a13 100%);
+  background-size: 
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    36px 36px,
+    36px 36px,
+    100% 100%;
+  backdrop-filter: var(--glass-blur-heavy);
+  -webkit-backdrop-filter: var(--glass-blur-heavy);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-xl);
+  padding: 2.2rem 2.4rem;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85), 0 0 60px rgba(37, 99, 235, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Floating Team Hearts Canvas (Blue on left, Red on right) */
+.battle-hearts-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.battle-arena-header,
+.battle-progress-wrapper,
+.battle-live-feed-row,
+.battle-panels-grid {
+  position: relative;
+  z-index: 2;
+}
+
+.battle-arena-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  direction: ltr;
+}
+
+.battle-live-cluster {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.live-pill-badge {
+  background: #ef4444;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.75rem;
+  padding: 5px 13px;
+  border-radius: var(--radius-pill);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: 0.8px;
+  box-shadow: 0 0 16px rgba(239, 68, 68, 0.6);
+}
+
+.live-pulsing-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ffffff;
+  animation: livePulse 1.2s infinite ease-in-out;
+}
+
+@keyframes livePulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+.battle-viewers-count {
+  background: rgba(0, 0, 0, 0.48);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-mono);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.06), 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+.battle-score-capsule {
+  background: rgba(14, 18, 28, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 6px 22px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  letter-spacing: 1px;
+}
+
+.score-team.blue-score { 
+  color: #3b82f6; 
+  text-shadow: 0 0 14px rgba(59, 130, 246, 0.75);
+  font-size: 1.15rem;
+}
+
+.score-team.red-score { 
+  color: #ef4444; 
+  text-shadow: 0 0 14px rgba(239, 68, 68, 0.75);
+  font-size: 1.15rem;
+}
+
+.score-vs { 
+  color: rgba(255, 255, 255, 0.35); 
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+/* Polished High-End Frosted Glass "New Round" Pill Button */
+.battle-restart-btn {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  border-radius: var(--radius-pill);
+  padding: 7px 18px;
+  font-size: 0.86rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.25);
+  transition: all 0.25s var(--ease-apple);
+}
+
+.battle-restart-btn img {
+  filter: brightness(0) invert(1);
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.battle-restart-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.36);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), 0 0 16px rgba(255, 255, 255, 0.18), inset 0 1px 2px rgba(255, 255, 255, 0.35);
+}
+
+.battle-restart-btn:hover img {
+  transform: rotate(180deg);
+}
+
+.battle-restart-btn:active {
+  transform: scale(0.95);
+}
+
+/* Battle Tug-of-War Progress Bar */
+.battle-progress-wrapper {
+  margin-bottom: 1.8rem;
+  direction: ltr;
+}
+
+/* Team Name ON TOP, Percentage UNDERNEATH */
+.battle-team-indicators {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 0.95rem;
+}
+
+.team-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.team-meta.team-blue {
+  align-items: flex-start;
+  text-align: left;
+  color: #60a5fa;
+  text-shadow: 0 0 16px rgba(59, 130, 246, 0.65);
+}
+
+.team-meta.team-red {
+  align-items: flex-end;
+  text-align: right;
+  color: #f87171;
+  text-shadow: 0 0 16px rgba(239, 68, 68, 0.65);
+}
+
+.team-label {
+  font-size: 0.98rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  opacity: 0.95;
+}
+
+.team-pct {
+  font-size: 1.65rem;
+  font-family: var(--font-mono);
+  font-weight: 900;
+  line-height: 1;
+}
+
+.battle-track-outer {
+  position: relative;
+  width: 100%;
+  height: 22px;
+  background: rgba(8, 12, 22, 0.9);
+  border-radius: 99px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.9), 0 0 24px rgba(0, 0, 0, 0.5);
+  display: flex;
+  overflow: visible;
+  padding: 2px;
+}
+
+.battle-track-blue {
+  height: 100%;
+  background: linear-gradient(90deg, #1d4ed8 0%, #2563eb 50%, #3b82f6 100%);
+  border-radius: 99px 0 0 99px;
+  transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.65);
+  position: relative;
+}
+
+.battle-track-blue::after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 6px;
+  right: 2px;
+  height: 4px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.05));
+  pointer-events: none;
+}
+
+.battle-track-red {
+  height: 100%;
+  background: linear-gradient(90deg, #f43f5e 0%, #e11d48 50%, #be123c 100%);
+  border-radius: 0 99px 99px 0;
+  transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 20px rgba(225, 29, 72, 0.65);
+  position: relative;
+}
+
+.battle-track-red::after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 2px;
+  right: 6px;
+  height: 4px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.45));
+  pointer-events: none;
+}
+
+.battle-token-slider {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: left 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 5;
+  pointer-events: none;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.8));
+}
+
+/* Center Token: Tik Games Official Vector Logo Badge */
+.battle-logo-token-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #1e293b, #0a0f1d);
+  border: 2px solid rgba(255, 255, 255, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.85), 0 0 18px rgba(59, 130, 246, 0.75), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+  animation: tokenFloat 2.4s infinite ease-in-out;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: transform 0.2s var(--ease-apple), box-shadow 0.2s ease;
+}
+
+.battle-logo-token-wrap:hover {
+  transform: scale(1.12);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.95), 0 0 28px rgba(59, 130, 246, 0.95), inset 0 1px 2px rgba(255, 255, 255, 0.9);
+}
+
+.battle-logo-token-img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  display: block;
+  filter: brightness(0) invert(1) drop-shadow(0 0 5px rgba(255, 255, 255, 0.55));
+}
+
+@keyframes tokenFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-3px) rotate(3deg); }
+}
+
+/* Parallel Live Stream Feeds (Blue on Left, Red on Right) */
+.battle-live-feed-row.parallel-feeds {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  min-height: 72px;
+  margin-bottom: 1.6rem;
+  direction: ltr;
+}
+
+.battle-team-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.battle-team-feed.blue-stream-feed {
+  align-items: flex-start;
+}
+
+.battle-team-feed.red-stream-feed {
+  align-items: flex-end;
+}
+
+.feed-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 0.82rem;
+  background: rgba(14, 18, 28, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: feedPopIn 0.35s var(--ease-apple);
+  width: fit-content;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4), var(--specular-inset);
+  color: var(--text-primary);
+}
+
+@keyframes feedPopIn {
+  from { opacity: 0; transform: translateY(-8px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.feed-pill.blue-feed {
+  border-color: rgba(59, 130, 246, 0.4);
+}
+.feed-pill.blue-feed .feed-avatar {
+  background: #2563eb;
+  color: #fff;
+}
+
+.feed-pill.red-feed {
+  border-color: rgba(239, 68, 68, 0.4);
+}
+.feed-pill.red-feed .feed-avatar {
+  background: #dc2626;
+  color: #fff;
+}
+
+.feed-pill.user-pill {
+  border-color: #5496ff;
+  background: rgba(30, 42, 68, 0.95);
+  box-shadow: 0 0 16px rgba(59, 130, 246, 0.5), var(--specular-inset);
+}
+.feed-pill.user-pill .feed-avatar {
+  background: #3b82f6;
+  color: #fff;
+  font-weight: 900;
+}
+
+.feed-avatar {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  flex-shrink: 0;
+}
+
+/* Elegant Text Styling: ZERO BOX / SQUARE (Matching User Request) */
+.feed-action {
+  font-weight: 800;
+  font-size: 0.82rem;
+  padding: 0 !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  margin-inline-start: 4px;
+  letter-spacing: 0.3px;
+  display: inline;
+}
+
+.feed-pill.blue-feed .feed-action {
+  color: #60a5fa;
+  text-shadow: 0 0 8px rgba(59, 130, 246, 0.5);
+}
+
+.feed-pill.red-feed .feed-action {
+  color: #f87171;
+  text-shadow: 0 0 8px rgba(239, 68, 68, 0.5);
+}
+
+.feed-pill.user-pill .feed-action {
+  color: #93c5fa;
+  text-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
+}
+
+/* White Stroke Outline for Gift Images (sticker-style) */
+.gift-real-img,
+.feed-gift-img,
+.flying-gift-to-logo,
+.flying-gift-ghost {
+  filter:
+    drop-shadow(1.5px 0 0 #fff) drop-shadow(-1.5px 0 0 #fff)
+    drop-shadow(0 1.5px 0 #fff) drop-shadow(0 -1.5px 0 #fff)
+    drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+}
+
+/* Flying Gift to Center Logo */
+.flying-gift-to-logo {
+  position: fixed;
+  z-index: 99999;
+  pointer-events: none;
+  object-fit: contain;
+  width: 46px;
+  height: 46px;
+  will-change: transform, opacity;
+  filter:
+    drop-shadow(1.5px 0 0 #fff) drop-shadow(-1.5px 0 0 #fff)
+    drop-shadow(0 1.5px 0 #fff) drop-shadow(0 -1.5px 0 #fff)
+    drop-shadow(0 0 14px rgba(var(--glow, 255,255,255), 0.95))
+    drop-shadow(0 0 28px rgba(var(--glow, 255,255,255), 0.6));
+}
+
+.flying-gift-ghost {
+  position: fixed;
+  z-index: 99998;
+  pointer-events: none;
+  object-fit: contain;
+  width: 40px;
+  height: 40px;
+  filter: blur(2px) drop-shadow(0 0 12px rgba(var(--glow, 255,255,255), 0.9));
+}
+
+.logo-impact-ring {
+  position: fixed;
+  z-index: 99997;
+  pointer-events: none;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 0 22px rgba(var(--glow, 255,255,255), 0.9), inset 0 0 14px rgba(var(--glow, 255,255,255), 0.6);
+}
+
+.battle-logo-token-wrap.token-impact {
+  animation: tokenImpactPulse 0.38s ease forwards;
+}
+
+@keyframes tokenImpactPulse {
+  0% { transform: scale(1); }
+  50% { 
+    transform: scale(1.24); 
+    box-shadow: 0 0 32px rgba(59, 130, 246, 0.95), 0 0 16px #ffffff, inset 0 1px 2px #fff; 
+  }
+  100% { transform: scale(1); }
+}
+
+/* Panels Grid (Blue vs Red) */
+.battle-panels-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  direction: ltr;
+}
+
+.battle-team-panel {
+  background: rgba(12, 16, 26, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08), 0 12px 30px rgba(0, 0, 0, 0.35);
+  transition: border-color 0.3s ease;
+}
+
+.battle-team-panel.blue-panel {
+  border-color: rgba(59, 130, 246, 0.3);
+}
+.battle-team-panel.blue-panel:hover {
+  border-color: rgba(59, 130, 246, 0.5);
+}
+
+.battle-team-panel.red-panel {
+  border-color: rgba(239, 68, 68, 0.3);
+}
+.battle-team-panel.red-panel:hover {
+  border-color: rgba(239, 68, 68, 0.5);
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.15rem;
+}
+
+.panel-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.team-glow-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.blue-indicator { background: #3b82f6; box-shadow: 0 0 12px #3b82f6; }
+.red-indicator { background: #ef4444; box-shadow: 0 0 12px #ef4444; }
+
+.panel-title {
+  font-size: 0.98rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #fff;
+}
+
+.panel-hint {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.gift-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.battle-gift-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 14px;
+  padding: 14px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.22s var(--ease-apple);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.06);
+  outline: none;
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.battle-gift-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.08), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.22s ease;
+  pointer-events: none;
+}
+
+.battle-gift-card:hover::before {
+  opacity: 1;
+}
+
+.blue-panel .battle-gift-card:hover {
+  transform: translateY(-4px);
+  background: rgba(59, 130, 246, 0.09);
+  border-color: rgba(59, 130, 246, 0.55);
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.32), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+.red-panel .battle-gift-card:hover {
+  transform: translateY(-4px);
+  background: rgba(239, 68, 68, 0.09);
+  border-color: rgba(239, 68, 68, 0.55);
+  box-shadow: 0 8px 24px rgba(239, 68, 68, 0.32), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+.battle-gift-card:active {
+  transform: scale(0.95);
+}
+
+.gift-icon-wrap {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.gift-real-img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+}
+
+.battle-gift-card:hover .gift-real-img {
+  transform: scale(1.18) rotate(4deg);
+}
+
+.feed-gift-img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  vertical-align: middle;
+  display: inline-block;
+  margin: 0 2px;
+}
+
+/* Selected Gift Card Outline (Matching Reference Screenshot cf3232a5.jpg) */
+.battle-gift-card.is-selected {
+  border-color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.14) !important;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.9), 0 8px 28px rgba(255, 255, 255, 0.45), inset 0 1px 2px rgba(255, 255, 255, 0.3) !important;
+  transform: translateY(-2px);
+}
+
+.gift-name {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #ffffff;
+  white-space: nowrap;
+  letter-spacing: -0.2px;
+}
+
+.gift-cost {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #fbbf24;
+  font-family: var(--font-mono);
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.gift-buff {
+  font-size: 0.66rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 2px 7px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+  background: rgba(255, 255, 255, 0.06);
+  padding: 2px 5px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+/* Flying Gift Particle Animation */
+.flying-gift-particle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  animation: flyToTugBar 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes flyToTugBar {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.95;
+    transform: translate(-50%, -130%) scale(1.35) rotate(-6deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -240%) scale(0.6) rotate(10deg);
+  }
+}
+
+/* ==========================================================================
+   VICTORY CELEBRATION (MATCHING REFERENCE SCREENSHOT cf3232a5.jpg)
+   ========================================================================== */
+.battle-victory-celebration {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 25;
+  opacity: 0;
+  pointer-events: none;
+  background: rgba(7, 9, 14, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: opacity 0.35s ease;
+  overflow: hidden;
+}
+
+.battle-victory-celebration.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.victory-confetti-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.victory-banner-cluster {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  animation: victoryPop 0.45s var(--ease-apple);
+}
+
+@keyframes victoryPop {
+  0% { transform: scale(0.6) rotate(-3deg); opacity: 0; }
+  70% { transform: scale(1.08) rotate(1deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+/* 3D Slanted Typography like in cf3232a5.jpg */
+.victory-banner-text {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-style: italic;
+  font-weight: 900;
+  font-size: 3.6rem;
+  letter-spacing: -1px;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #ffffff;
+  user-select: none;
+  margin-bottom: 0.8rem;
+  transform: skewX(-4deg);
+}
+
+.victory-banner-text.red-won {
+  text-shadow: 
+    0 3px 0 #e11d48,
+    0 6px 0 #be123c,
+    0 9px 0 #9f1239,
+    0 12px 18px rgba(0, 0, 0, 0.8),
+    0 0 35px rgba(244, 63, 94, 0.85);
+}
+
+.victory-banner-text.blue-won {
+  text-shadow: 
+    0 3px 0 #2563eb,
+    0 6px 0 #1d4ed8,
+    0 9px 0 #1e3a8a,
+    0 12px 18px rgba(0, 0, 0, 0.8),
+    0 0 35px rgba(59, 130, 246, 0.85);
+}
+
+.battle-quick-rematch-btn {
+  margin-top: 1rem;
+  padding: 10px 24px;
+  border-radius: var(--radius-pill);
+  background: rgba(14, 18, 28, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), var(--specular-inset);
+  transition: all 0.25s var(--ease-apple);
+}
+
+.battle-quick-rematch-btn:hover {
+  background: #ffffff;
+  color: #07090e;
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+}
+
+/* --------------------------------------------------------------------------
    PRICING & SUBSCRIPTION SECTION (APPLE FROSTED TIERS)
    -------------------------------------------------------------------------- */
 .pricing-grid {
@@ -1212,6 +2047,61 @@ body.lang-en {
     line-height: 1.6;
   }
 
+  /* Interactive Battle Arena Mobile */
+  .battle-arena-card {
+    padding: 1.4rem 1rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .battle-arena-header {
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 1.4rem;
+  }
+
+  .battle-panels-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .gift-cards-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+  }
+
+  .battle-gift-card {
+    padding: 8px 3px;
+    gap: 3px;
+  }
+
+  .gift-icon-wrap {
+    width: 28px;
+    height: 28px;
+  }
+
+  .gift-name {
+    font-size: 0.66rem;
+  }
+
+  .gift-buff {
+    font-size: 0.58rem;
+    padding: 1px 3px;
+  }
+
+  .battle-logo-token-wrap {
+    width: 38px;
+    height: 38px;
+  }
+
+  .battle-logo-token-img {
+    width: 22px;
+    height: 22px;
+  }
+
+  .victory-banner-text {
+    font-size: 2.2rem;
+  }
+
   /* Pricing Grid */
   .pricing-grid {
     grid-template-columns: 1fr;
@@ -1321,3 +2211,67 @@ body.lang-en {
     height: 165px;
   }
 }
+
+.hero-free-note{display:inline-flex;align-items:center;gap:8px;margin:0 auto 1.4rem;padding:7px 16px;border-radius:999px;background:rgba(59,130,246,.12);border:1px solid rgba(96,165,250,.35);color:#93c5fd;font-weight:700;font-size:.9rem;box-shadow:0 0 18px rgba(59,130,246,.2)}
+.hero-free-note img{filter:brightness(0) invert(1) sepia(1) saturate(4) hue-rotate(185deg)}
+
+/* Final override: white sticker stroke around every gift image */
+.battle-gift-card .gift-real-img,.feed-pill .feed-gift-img{filter:drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff) drop-shadow(0 4px 8px rgba(0,0,0,.5))}
+.feed-pill .feed-gift-img{filter:drop-shadow(1px 0 0 #fff) drop-shadow(-1px 0 0 #fff) drop-shadow(0 1px 0 #fff) drop-shadow(0 -1px 0 #fff)}
+
+/* Feed pills: no stroke around gift icons */
+.feed-pill .feed-gift-img{filter:none !important}
+
+/* Team name above bar, percentage under bar; feeds as separate stacked rows */
+.battle-team-indicators{margin-bottom:.7rem}
+.team-label{font-size:.82rem;letter-spacing:1.5px;font-weight:800}
+.battle-pct-row{display:flex;justify-content:space-between;margin-top:.55rem;direction:ltr}
+.battle-pct-row .team-pct{font-size:.95rem;font-weight:800;font-family:var(--font-mono)}
+.pct-blue{color:#60a5fa;text-shadow:0 0 12px rgba(59,130,246,.6)}
+.pct-red{color:#f87171;text-shadow:0 0 12px rgba(239,68,68,.6)}
+.battle-live-feed-row.parallel-feeds{margin-top:1.1rem}
+.battle-team-feed{gap:10px}
+.battle-team-feed .feed-pill{padding:6px 16px;background:rgba(6,9,16,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+
+/* ===== Mobile: clear, comfortable battle game ===== */
+@media (max-width: 720px){
+.battle-arena-card{padding:1.1rem .85rem;border-radius:22px}
+.battle-arena-header{flex-wrap:wrap;gap:10px;margin-bottom:1.2rem}
+.battle-score-capsule{order:3;margin:0 auto;padding:5px 18px}
+.battle-restart-btn{padding:6px 12px;font-size:.78rem}
+.battle-viewers-count{padding:5px 10px;font-size:.8rem}
+.team-label{font-size:.72rem;letter-spacing:.8px}
+.battle-pct-row .team-pct{font-size:.85rem}
+.battle-track-outer{height:18px}
+.battle-logo-token-wrap{width:40px;height:40px}
+.battle-logo-token-img{width:23px;height:23px}
+.battle-live-feed-row.parallel-feeds{gap:8px;min-height:64px}
+.battle-team-feed .feed-pill{font-size:.68rem;padding:4px 9px;gap:5px;max-width:100%}
+.battle-team-feed .feed-avatar{width:18px;height:18px;font-size:.56rem}
+.battle-team-feed .feed-text strong{max-width:62px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:inline-block;vertical-align:bottom}
+.feed-action{font-size:.66rem}
+.battle-panels-grid{grid-template-columns:1fr;gap:12px}
+.battle-team-panel{padding:1rem .8rem;border-radius:18px}
+.gift-cards-grid{gap:6px}
+.battle-gift-card{padding:10px 3px;gap:4px;border-radius:12px}
+.gift-icon-wrap{width:36px;height:36px}
+.gift-real-img{width:32px;height:32px}
+.gift-name{font-size:.68rem}
+.gift-buff{font-size:.56rem;padding:2px 4px}
+.victory-banner-text{font-size:2rem}
+}
+@media (max-width: 380px){
+.battle-team-feed .feed-text strong{max-width:44px}
+.gift-name{font-size:.62rem}
+.gift-buff{font-size:.52rem}
+}
+
+/* LIVE badge and viewers capsule: identical size */
+.live-pill-badge,.battle-viewers-count{height:34px;box-sizing:border-box;padding:0 14px;display:inline-flex;align-items:center;justify-content:center;gap:7px;font-size:.82rem;line-height:1;border-radius:999px}
+@media (max-width:720px){.live-pill-badge,.battle-viewers-count{height:30px;padding:0 11px;font-size:.74rem}}
+
+/* ===== Two stacked main cards: [bar+score+feeds] on top, [gifts] below ===== */
+.battle-arena-card{background:none !important;backdrop-filter:none !important;-webkit-backdrop-filter:none !important;border:none !important;box-shadow:none !important;padding:0 !important;overflow:visible !important;display:flex;flex-direction:column;gap:18px}
+.battle-top-card{position:relative;overflow:hidden;padding:2.2rem 2.4rem;border-radius:var(--radius-xl);border:1px solid rgba(255,255,255,.12);background:radial-gradient(circle at 12% 28%,rgba(37,99,235,.18) 0%,transparent 48%),radial-gradient(circle at 88% 28%,rgba(225,29,72,.18) 0%,transparent 48%),linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px),linear-gradient(180deg,#0e1322 0%,#080a13 100%);background-size:100% 100%,100% 100%,36px 36px,36px 36px,100% 100%;box-shadow:0 30px 80px rgba(0,0,0,.85),0 0 60px rgba(37,99,235,.12),inset 0 1px 1px rgba(255,255,255,.2)}
+.battle-bottom-card{padding:1.4rem;border-radius:var(--radius-xl);border:1px solid rgba(255,255,255,.1);background:linear-gradient(180deg,rgba(14,19,34,.92),rgba(8,10,19,.92));box-shadow:0 20px 60px rgba(0,0,0,.7),inset 0 1px 1px rgba(255,255,255,.14)}
+@media (max-width:720px){.battle-arena-card{gap:12px}.battle-top-card{padding:1.1rem .85rem;border-radius:22px}.battle-bottom-card{padding:.8rem;border-radius:22px}}
