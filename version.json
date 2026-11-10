@@ -1,0 +1,12 @@
+{
+  "version": "0.1.1",
+  "latest_version": "0.1.1",
+  "release_name": "Tik Games v0.1.1",
+  "download_url": "https://tikgames.site/TikGames_Setup.exe",
+  "mandatory": false,
+  "changelog": [
+    "Fixed sand dunes and horizon mountains flickering",
+    "Instantly clear all effects when crossing finish line & on victory podium",
+    "Enhanced auto-updater for static websites"
+  ]
+}
