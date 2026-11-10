@@ -67,6 +67,8 @@
         "url": "https://tikgames.site/",
         "applicationCategory": "GameApplication, MultimediaApplication",
         "operatingSystem": "Windows 10, Windows 11",
+        "downloadUrl": "https://tikgames.site/download",
+        "softwareVersion": "0.1.1",
         "image": "https://tikgames.site/assets/logo_box.png",
         "logo": "https://tikgames.site/assets/logo_box.png",
         "publisher": {
@@ -203,8 +205,8 @@
         </button>
 
         <!-- WhatsApp Beta CTA -->
-        <a href="https://wa.me/212617892238?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D9%86%D8%B3%D8%AE%D8%A9%20Beta%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20Tik%20Games" target="_blank" class="btn-whatsapp-pill">
-          <span>طلب نسخة Beta</span>
+        <a href="https://wa.me/212617892238?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D9%86%D8%B3%D8%AE%D8%A9%20Beta%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20Tik%20Games" data-wa-key="wa_beta" target="_blank" class="btn-whatsapp-pill">
+          <span data-i18n="nav_beta_short">طلب نسخة Beta</span>
         </a>
       </div>
     </div>
@@ -234,22 +236,22 @@
 
     <!-- Call to actions -->
     <div class="hero-buttons-cluster">
-      <a href="https://wa.me/212617892238?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D9%86%D8%B3%D8%AE%D8%A9%20Beta%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20Tik%20Games" target="_blank" class="btn-whatsapp-pill btn-hero-large">
+      <a href="https://wa.me/212617892238?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D9%86%D8%B3%D8%AE%D8%A9%20Beta%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20Tik%20Games" data-wa-key="wa_beta" target="_blank" class="btn-whatsapp-pill btn-hero-large">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
           <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
         </svg>
         <span data-i18n="hero_btn_beta">طلب نسخة Beta عبر واتساب</span>
       </a>
 
-      <!-- Download Soon Button -->
-      <div class="btn-soon-pill btn-hero-large" title="رابط التحميل سيكون متاحاً قريباً">
+      <!-- Download Soon Button (Disabled / Non-clickable) -->
+      <div class="btn-soon-pill btn-hero-large" aria-disabled="true" data-i18n-title="hero_soon_title" title="رابط التحميل سيكون متاحاً قريباً">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
           <polyline points="7 10 12 15 17 10"/>
           <line x1="12" y1="15" x2="12" y2="3"/>
         </svg>
         <span data-i18n="hero_btn_download">تحميل التطبيق</span>
-        <span class="tag-soon-badge">Soon</span>
+        <span class="tag-soon-badge" data-i18n="hero_soon_badge">قريباً</span>
       </div>
     </div>
 
@@ -693,7 +695,7 @@
           <p class="pricing-tier-desc" data-i18n="tier_monthly_desc">مثالي للبدء وتجربة قوة ألعاب البث التفاعلي على حسابك.</p>
           <div class="pricing-price-wrap">
             <span class="price-number">$19</span>
-            <span class="price-period">/ شهر</span>
+            <span class="price-period" data-i18n="period_month">/ شهر</span>
           </div>
 
           <ul class="pricing-features-list">
@@ -721,8 +723,8 @@
         </div>
 
         <div class="pricing-card-action">
-          <a href="https://wa.me/212617892238?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D8%A7%D9%84%D8%B4%D9%87%D8%B1%D9%8A%20%D9%84%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20Tik%20Games" target="_blank" class="btn-apple-primary">
-            <span>طلب الاشتراك عبر واتساب</span>
+          <a href="https://wa.me/212617892238?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D8%A7%D9%84%D8%B4%D9%87%D8%B1%D9%8A%20%D9%84%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20Tik%20Games" data-wa-key="wa_monthly" target="_blank" class="btn-apple-primary">
+            <span data-i18n="btn_order_whatsapp">طلب الاشتراك عبر واتساب</span>
           </a>
         </div>
       </div>
@@ -734,7 +736,7 @@
           <h3 class="pricing-tier-name" style="color: var(--accent-top);" data-i18n="tier_inf_title">اشتراك مجاني للمؤثرين</h3>
           <p class="pricing-tier-desc" data-i18n="tier_inf_desc">متاح مجاناً 100% لأصحاب قنوات التيك توك والستريمرز النشطين.</p>
           <div class="pricing-price-wrap">
-            <span class="price-number price-free">مجاناً</span>
+            <span class="price-number price-free" data-i18n="price_free_word">مجاناً</span>
             <span class="price-period">(Free 100%)</span>
           </div>
 
@@ -763,11 +765,11 @@
         </div>
 
         <div class="pricing-card-action">
-          <a href="https://wa.me/212617892238?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A7%D9%86%D8%A7%20%D8%B5%D8%A7%D9%86%D8%B9%20%D9%85%D8%AD%D8%AA%D9%88%D9%89%20%D9%88%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%AD%D8%B5%D9%88%D9%84%20%D8%B9%D9%84%D9%89%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D8%A7%D9%84%D9%85%D8%AC%D8%A7%D9%86%D9%8A%20%D8%A7%D9%84%D8%AE%D8%A7%D8%B5%20%D8%A8%D8%A7%D9%84%D9%85%D8%A4%D8%AB%D8%B1%D9%8A%D9%86%20%D9%84%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20Tik%20Games" target="_blank" class="btn-whatsapp-pill">
+          <a href="https://wa.me/212617892238?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A7%D9%86%D8%A7%20%D8%B5%D8%A7%D9%86%D8%B9%20%D9%85%D8%AD%D8%AA%D9%88%D9%89%20%D9%88%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%AD%D8%B5%D9%88%D9%84%20%D8%B9%D9%84%D9%89%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D8%A7%D9%84%D9%85%D8%AC%D8%A7%D9%86%D9%8A%20%D8%A7%D9%84%D8%AE%D8%A7%D8%B5%20%D8%A8%D8%A7%D9%84%D9%85%D8%A4%D8%AB%D8%B1%D9%8A%D9%86%20%D9%84%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20Tik%20Games" data-wa-key="wa_influencer" target="_blank" class="btn-whatsapp-pill">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
             </svg>
-            <span>احصل على نسختك المجانية عبر واتساب</span>
+            <span data-i18n="btn_free_whatsapp">احصل على نسختك المجانية عبر واتساب</span>
           </a>
         </div>
       </div>
@@ -779,7 +781,7 @@
           <p class="pricing-tier-desc" data-i18n="tier_yearly_desc">الخيار الاحترافي للستريمرز الدائمين الذين يبثون يومياً.</p>
           <div class="pricing-price-wrap">
             <span class="price-number">$99</span>
-            <span class="price-period">/ سنة</span>
+            <span class="price-period" data-i18n="period_year">/ سنة</span>
           </div>
 
           <ul class="pricing-features-list">
@@ -807,8 +809,8 @@
         </div>
 
         <div class="pricing-card-action">
-          <a href="https://wa.me/212617892238?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D8%A7%D9%84%D8%B3%D9%86%D9%88%D9%8A%20%D9%84%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20Tik%20Games" target="_blank" class="btn-apple-primary">
-            <span>طلب الاشتراك عبر واتساب</span>
+          <a href="https://wa.me/212617892238?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%A7%D9%84%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D8%A7%D9%84%D8%B3%D9%86%D9%88%D9%8A%20%D9%84%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20Tik%20Games" data-wa-key="wa_yearly" target="_blank" class="btn-apple-primary">
+            <span data-i18n="btn_order_whatsapp">طلب الاشتراك عبر واتساب</span>
           </a>
         </div>
       </div>
@@ -833,7 +835,7 @@
         لطلب تجربة النسخة التجريبية (Beta) أو الحصول على كود التفعيل والاشتراك المجاني للمؤثرين، تواصل معنا مباشرة عبر محادثة واتساب.
       </p>
 
-      <a href="https://wa.me/212617892238?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D9%86%D8%B3%D8%AE%D8%A9%20Beta%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20Tik%20Games" target="_blank" class="btn-whatsapp-pill btn-hero-large">
+      <a href="https://wa.me/212617892238?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D9%86%D8%B3%D8%AE%D8%A9%20Beta%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20Tik%20Games" data-wa-key="wa_beta" target="_blank" class="btn-whatsapp-pill btn-hero-large">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
           <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
         </svg>
@@ -854,12 +856,12 @@
       </div>
 
       <div>
-        <span>© 2026 Tik Games. جميع الحقوق محفوظة.</span>
+        <span data-i18n="footer_rights">© 2026 Tik Games. جميع الحقوق محفوظة.</span>
       </div>
 
       <div>
         <a href="https://wa.me/212617892238" target="_blank" style="color: var(--accent-top); text-decoration: none; font-weight: 600;">
-          واتساب: +212617892238
+          <span data-i18n="footer_whatsapp">واتساب: +212617892238</span>
         </a>
       </div>
     </div>

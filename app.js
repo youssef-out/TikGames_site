@@ -1,4 +1,4 @@
-﻿/**
+/**
  * TIK GAMES — APPLE FROSTED GLASS & AMBIENT AUDIO ENGINE
  * Features:
  * - Real ambient background audio loop (assets/sounds/ambient.wav) at comfortable audible volume
@@ -92,7 +92,17 @@ document.addEventListener('DOMContentLoaded', () => {
       gift_icecream: "آيس كريم",
       gift_pass: "تذكرة رحلة",
       gift_money_gun: "مسدس الأموال",
-      battle_play_again: "جولة جديدة • Play Again"
+      battle_play_again: "جولة جديدة • Play Again",
+      nav_beta_short: "طلب نسخة Beta",
+      hero_soon_badge: "قريباً",
+      hero_soon_title: "رابط التحميل سيكون متاحاً قريباً",
+      btn_order_whatsapp: "طلب الاشتراك عبر واتساب",
+      btn_free_whatsapp: "احصل على نسختك المجانية عبر واتساب",
+      period_month: "/ شهر",
+      period_year: "/ سنة",
+      price_free_word: "مجاناً",
+      footer_rights: "© 2026 Tik Games. جميع الحقوق محفوظة.",
+      footer_whatsapp: "واتساب: +212617892238"
     },
     en: {
       nav_features: "Features",
@@ -171,14 +181,46 @@ document.addEventListener('DOMContentLoaded', () => {
       gift_icecream: "Ice Cream",
       gift_pass: "Journey Pass",
       gift_money_gun: "Money Gun",
-      battle_play_again: "New Round • Play Again"
+      battle_play_again: "New Round • Play Again",
+      nav_beta_short: "Request Beta",
+      hero_soon_badge: "Soon",
+      hero_soon_title: "Download link will be available soon",
+      btn_order_whatsapp: "Order via WhatsApp",
+      btn_free_whatsapp: "Get Your Free Pass via WhatsApp",
+      period_month: "/ month",
+      period_year: "/ year",
+      price_free_word: "Free",
+      footer_rights: "© 2026 Tik Games. All rights reserved.",
+      footer_whatsapp: "WhatsApp: +212617892238"
     }
   };
+
+  const WHATSAPP_NUMBER = '212617892238';
+  const waMessages = {
+    ar: {
+      wa_beta: "مرحبا، اريد طلب نسخة Beta من تطبيق Tik Games",
+      wa_monthly: "مرحبا، اريد طلب الاشتراك الشهري لتطبيق Tik Games",
+      wa_influencer: "مرحبا، انا صانع محتوى واريد الحصول على الاشتراك المجاني الخاص بالمؤثرين لتطبيق Tik Games",
+      wa_yearly: "مرحبا، اريد طلب الاشتراك السنوي لتطبيق Tik Games"
+    },
+    en: {
+      wa_beta: "Hello, I would like to request the Beta version of Tik Games.",
+      wa_monthly: "Hello, I would like to order the Monthly Pass for Tik Games.",
+      wa_influencer: "Hello, I am a content creator and would like to get the Free Creator Pass for Tik Games.",
+      wa_yearly: "Hello, I would like to order the Annual Pro Pass for Tik Games."
+    }
+  };
+
+  // Resolve base URL relative to app.js so root (/) and subpages (/download/) both work cleanly
+  const appScriptEl = document.querySelector('script[src*="app.js"]');
+  const SITE_BASE = appScriptEl
+    ? appScriptEl.src.replace(/app\.js(\?.*)?$/i, '')
+    : './';
 
   // --------------------------------------------------------------------------
   // 2. AUDIBLE & COMFORTABLE AMBIENT BACKGROUND MUSIC
   // --------------------------------------------------------------------------
-  const ambientAudio = new Audio('assets/sounds/ambient.wav');
+  const ambientAudio = new Audio(`${SITE_BASE}assets/sounds/ambient.wav`);
   ambientAudio.loop = true;
   ambientAudio.preload = 'auto';
   ambientAudio.volume = 0.40; // Audible, clear, comfortable volume
@@ -270,7 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Attach hover sounds to cards, pills, and buttons
   const hoverTargets = document.querySelectorAll(
-    '.game-glass-card, .glass-bento-card, .pricing-glass-card, .btn-apple-primary, .btn-whatsapp-pill, .icon-glass-btn, .nav-link'
+    '.game-glass-card, .glass-bento-card, .pricing-glass-card, .btn-apple-primary, .btn-whatsapp-pill, .btn-download-pill, .icon-glass-btn, .nav-link'
   );
 
   hoverTargets.forEach(el => {
@@ -308,7 +350,23 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
+    document.querySelectorAll('[data-i18n-title]').forEach(el => {
+      const key = el.getAttribute('data-i18n-title');
+      if (dict[key]) {
+        el.title = dict[key];
+      }
+    });
+
+    const waDict = waMessages[lang] || waMessages.ar;
+    document.querySelectorAll('[data-wa-key]').forEach(el => {
+      const key = el.getAttribute('data-wa-key');
+      if (waDict[key]) {
+        el.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waDict[key])}`;
+      }
+    });
+
     updateSoundUI();
+    window.dispatchEvent(new CustomEvent('tikgames:langchange', { detail: { lang } }));
   }
 
   if (langBtn) {
@@ -1280,5 +1338,62 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   initLiveBattleGame();
+
+  // --------------------------------------------------------------------------
+  // 8. LIVE LATEST GITHUB RELEASE RESOLVER FOR HERO DOWNLOAD BUTTON
+  // --------------------------------------------------------------------------
+  async function initLatestReleaseButton() {
+    const btn = document.getElementById('heroDownloadBtn');
+    const verBadge = document.getElementById('heroDownloadVer');
+    if (!btn) return;
+
+    const REPO = 'youssef-out/TikGames_site';
+    const API_URL = `https://api.github.com/repos/${REPO}/releases/latest`;
+
+    try {
+      const res = await fetch(API_URL, {
+        headers: { 'Accept': 'application/vnd.github+json' },
+        cache: 'no-store'
+      });
+      if (res.ok) {
+        const data = await res.json();
+        const assets = Array.isArray(data.assets) ? data.assets : [];
+        const exeAsset =
+          assets.find(a => /\.exe$/i.test(a.name)) ||
+          assets.find(a => /\.(msi|zip)$/i.test(a.name)) ||
+          assets[0];
+
+        if (data.tag_name && verBadge) {
+          verBadge.textContent = data.tag_name;
+        }
+        if (exeAsset && exeAsset.browser_download_url) {
+          btn.href = exeAsset.browser_download_url;
+          const sizeMB = exeAsset.size ? ` (${(exeAsset.size / (1024 * 1024)).toFixed(1)} MB)` : '';
+          btn.title = `${exeAsset.name}${sizeMB}`;
+          return;
+        }
+      }
+    } catch (_) {
+      // Fallback to version.json below
+    }
+
+    try {
+      const vRes = await fetch(`version.json?t=${Date.now()}`, { cache: 'no-store' });
+      if (vRes.ok) {
+        const vData = await vRes.json();
+        const ver = vData.latest_version || vData.version;
+        if (ver && verBadge) {
+          verBadge.textContent = ver.startsWith('v') ? ver : `v${ver}`;
+        }
+        if (vData.download_url) {
+          btn.href = vData.download_url;
+        }
+      }
+    } catch (_) {
+      // Keep default href="download"
+    }
+  }
+
+  initLatestReleaseButton();
 });
 

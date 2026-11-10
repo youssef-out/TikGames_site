@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تحميل أحدث إصدار | Tik Games — Download Latest Release</title>
+  <link rel="canonical" href="https://tikgames.site/download">
+  <meta name="description" content="تحميل أحدث إصدار رسمي من تطبيق Tik Games للكمبيوتر (Windows) لألعاب بث تيك توك لايف التفاعلية.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#080a13">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tikgames.site/download">
+  <meta property="og:site_name" content="Tik Games">
+  <meta property="og:title" content="تحميل أحدث إصدار | Tik Games">
+  <meta property="og:description" content="رابط التحميل المباشر لأحدث إصدار من تطبيق Tik Games لألعاب بث تيك توك لايف التفاعلية.">
+  <meta property="og:image" content="https://tikgames.site/assets/logo_box.png">
+
+  <!-- Favicon & App Icons (Official Dark Background with Royal Blue Border) -->
+  <link rel="icon" type="image/svg+xml" href="assets/logo_box.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/logo_box_192.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="assets/logo_box_96.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="assets/logo_box_48.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/logo_box_180.png">
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <!-- Fonts (Apple Aesthetic: Cairo & Inter) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Apple Frosted Glass Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Interactive Dot Grid Canvas (Exact same background as main site) -->
+  <canvas id="dotGridCanvas" class="dot-grid-canvas"></canvas>
+
+  <!-- ========================================================================
+       APPLE GLASS NAVIGATION BAR (IDENTICAL TO MAIN SITE)
+       ======================================================================== -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="./" class="brand-wrapper">
+        <img src="assets/logo_mark.svg" alt="Tik Games" class="brand-logo-img">
+        <span class="brand-title">Tik Games</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="./#features" class="nav-link" data-i18n="nav_features">المميزات</a></li>
+          <li><a href="./#games" class="nav-link" data-i18n="nav_games">الألعاب</a></li>
+          <li><a href="./#live-demo" class="nav-link" data-i18n="nav_demo">تجربة اللعبة</a></li>
+          <li><a href="./#pricing" class="nav-link" data-i18n="nav_pricing">الاشتراكات</a></li>
+          <li><a href="./#contact" class="nav-link" data-i18n="nav_contact">تواصل عبر واتساب</a></li>
+        </ul>
+      </nav>
+
+      <!-- Action Tools -->
+      <div class="header-actions">
+        <button id="soundToggleBtn" class="icon-glass-btn sound-ambient-btn muted" title="صوت الخلفية الهادئ (تشغيل/إيقاف)">
+          <div class="audio-bars-wrap">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+          <span class="sound-btn-text" id="soundBtnText" data-i18n="sound_btn_lbl">صوت هادئ</span>
+        </button>
+
+        <button id="langToggleBtn" class="icon-glass-btn lang-btn" title="تبديل اللغة / Switch Language">
+          <svg class="lang-globe-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <span id="langLabel">English</span>
+        </button>
+
+        <a href="https://wa.me/212617892238?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A7%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D9%86%D8%B3%D8%AE%D8%A9%20Beta%20%D9%85%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20Tik%20Games" data-wa-key="wa_beta" target="_blank" class="btn-whatsapp-pill">
+          <span data-i18n="nav_beta_short">طلب نسخة Beta</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       PROFESSIONAL RELEASE DOWNLOAD PORTAL
+       ======================================================================== -->
+  <main class="download-page-wrap">
+    <div class="download-studio-frame">
+      <!-- Top Window Header Bar -->
+      <div class="glass-window-bar">
+        <div class="mac-traffic-lights">
+          <span class="traffic-light traffic-close"></span>
+          <span class="traffic-light traffic-min"></span>
+          <span class="traffic-light traffic-max"></span>
+        </div>
+        <div class="frame-brand-label">Tik Games — Official Release Installer</div>
+        <div style="width: 50px;"></div>
+      </div>
+
+      <!-- Main Card Body -->
+      <div class="download-studio-body">
+        <div class="download-icon-halo">
+          <img src="assets/logo_box.svg" alt="Tik Games" class="download-app-icon">
+        </div>
+
+        <div class="download-status-pill">
+          <span class="live-dot"></span>
+          <span id="dlStatusPill">إصدار رسمي موثّق • Tik Games</span>
+        </div>
+
+        <h1 id="dlTitle" class="download-title">جاري تجهيز أحدث إصدار...</h1>
+        <p id="dlSubtitle" class="download-subtitle">
+          يتم الآن جلب رابط التحميل المباشر من الخوادم الرسمية.
+        </p>
+
+        <div id="dlSpinner" class="download-spinner"></div>
+
+        <!-- 3-Tile Structured Stats -->
+        <div class="download-stats-grid">
+          <div class="download-stat-tile">
+            <span class="download-stat-label" id="lblVer">الإصدار الحالي</span>
+            <span class="download-stat-value" id="dlVersionPill">—</span>
+          </div>
+          <div class="download-stat-tile">
+            <span class="download-stat-label" id="lblSize">حجم الملف</span>
+            <span class="download-stat-value" id="dlSizePill">—</span>
+          </div>
+          <div class="download-stat-tile">
+            <span class="download-stat-label" id="lblPlatform">النظام المدعوم</span>
+            <span class="download-stat-value" id="dlPlatformVal">Windows 10/11</span>
+          </div>
+        </div>
+
+        <!-- Monospace Filename Bar -->
+        <div class="download-file-bar">
+          <span class="download-file-name" id="dlFilePill">TikGames_Setup.exe</span>
+          <span class="download-source-tag" id="dlSourceTag">Official Installer</span>
+        </div>
+
+        <!-- Primary & Secondary Action Buttons -->
+        <div class="download-actions-row">
+          <a id="dlDirectBtn" href="https://github.com/youssef-out/TikGames_site/releases/latest" class="btn-whatsapp-pill btn-hero-large">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            <span id="dlBtnLabel">اضغط هنا للتحميل المباشر</span>
+          </a>
+
+          <a href="./" id="dlBackBtn" class="btn-download-pill btn-hero-large">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+            <span id="dlBackLabel">العودة إلى الرئيسية</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick 3-Step Installation Strip -->
+    <div class="download-steps-grid">
+      <div class="download-step-card">
+        <span class="download-step-num">01</span>
+        <h3 class="download-step-title" id="step1Title">تشغيل المثبّت</h3>
+        <p class="download-step-desc" id="step1Desc">افتح ملف التثبيت بعد اكتمال التحميل وسيتم إعداد البرنامج تلقائياً.</p>
+      </div>
+      <div class="download-step-card">
+        <span class="download-step-num">02</span>
+        <h3 class="download-step-title" id="step2Title">تفعيل الحساب</h3>
+        <p class="download-step-desc" id="step2Desc">أدخل كود التفعيل الخاص بك أو تواصل معنا للحصول على ترخيص المؤثرين المجاني.</p>
+      </div>
+      <div class="download-step-card">
+        <span class="download-step-num">03</span>
+        <h3 class="download-step-title" id="step3Title">بدء البث التفاعلي</h3>
+        <p class="download-step-desc" id="step3Desc">اكتب اسم حسابك (@username) وانطلق فوراً في بث تفاعلي مباشر مع الهدايا.</p>
+      </div>
+    </div>
+
+    <!-- Dynamic Release Notes Card (shown when available) -->
+    <div id="dlChangelogCard" class="download-changelog-card" style="display: none;">
+      <div class="download-changelog-title">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.4">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        <span id="dlChangelogTitle">ما الجديد في هذا الإصدار</span>
+      </div>
+      <ul id="dlChangelogList" class="download-changelog-list"></ul>
+    </div>
+  </main>
+
+  <!-- ========================================================================
+       APPLE MINIMALIST FOOTER (IDENTICAL TO MAIN SITE)
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <img src="assets/logo_mark.svg" alt="Tik Games">
+        <span>Tik Games</span>
+      </div>
+
+      <div>
+        <span id="footerCopy">© 2026 Tik Games. جميع الحقوق محفوظة.</span>
+      </div>
+
+      <div>
+        <a href="https://wa.me/212617892238" target="_blank" style="color: var(--accent-top); text-decoration: none; font-weight: 600;">
+          <span data-i18n="footer_whatsapp">واتساب: +212617892238</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main Site Interactive Engine (Dot Grid + Audio + Bilingual Switcher) -->
+  <script src="app.js"></script>
+
+  <!-- Latest Release Resolver & Dynamic UI Controller -->
+  <script>
+    (function () {
+      const REPO = 'youssef-out/TikGames_site';
+      const API_URL = `https://api.github.com/repos/${REPO}/releases/latest`;
+      const FALLBACK_PAGE = `https://github.com/${REPO}/releases/latest`;
+
+      let currentState = 'loading'; // 'loading' | 'ready' | 'fallback'
+      let resolvedUrl = FALLBACK_PAGE;
+      let downloadTriggered = false;
+
+      const i18nCopy = {
+        ar: {
+          statusPill: 'إصدار رسمي موثّق • Tik Games',
+          loadingTitle: 'جاري تجهيز أحدث إصدار...',
+          loadingSub: 'يتم الآن تجهيز رابط التحميل المباشر لنسختك الرسمية.',
+          readyTitle: 'بدأ تحميل أحدث إصدار!',
+          readySub: 'إذا لم يبدأ التحميل تلقائياً خلال ثوانٍ، اضغط على زر التحميل المباشر أدناه.',
+          fallbackTitle: 'أحدث إصدار جاهز للتحميل',
+          fallbackSub: 'اضغط على الزر أدناه لبدء تحميل أحدث إصدار.',
+          sourceTag: 'مثبّت رسمي',
+          lblVer: 'الإصدار الحالي',
+          lblSize: 'حجم الملف',
+          lblPlatform: 'النظام المدعوم',
+          btnDirect: 'اضغط هنا للتحميل المباشر',
+          btnBack: 'العودة إلى الرئيسية',
+          step1Title: 'تشغيل المثبّت',
+          step1Desc: 'افتح ملف التثبيت بعد اكتمال التحميل وسيتم إعداد البرنامج تلقائياً.',
+          step2Title: 'تفعيل الحساب',
+          step2Desc: 'أدخل كود التفعيل الخاص بك أو تواصل معنا للحصول على ترخيص المؤثرين المجاني.',
+          step3Title: 'بدء البث التفاعلي',
+          step3Desc: 'اكتب اسم حسابك (@username) وانطلق فوراً في بث تفاعلي مباشر مع الهدايا.',
+          changelogTitle: 'ما الجديد في هذا الإصدار',
+          footerCopy: '© 2026 Tik Games. جميع الحقوق محفوظة.'
+        },
+        en: {
+          statusPill: 'Verified Official Release • Tik Games',
+          loadingTitle: 'Fetching latest release...',
+          loadingSub: 'Preparing your direct download for the newest official installer.',
+          readyTitle: 'Your Download Has Started!',
+          readySub: 'If your download does not start automatically within a few seconds, use the direct button below.',
+          fallbackTitle: 'Latest Release Ready',
+          fallbackSub: 'Click the button below to download the latest official installer.',
+          sourceTag: 'Official Installer',
+          lblVer: 'Latest Version',
+          lblSize: 'File Size',
+          lblPlatform: 'Platform',
+          btnDirect: 'Download Installer Now',
+          btnBack: 'Back to Home',
+          step1Title: 'Run the Installer',
+          step1Desc: 'Open the setup file once downloaded to install Tik Games in seconds.',
+          step2Title: 'Activate License',
+          step2Desc: 'Enter your license key or contact us for a free creator & influencer pass.',
+          step3Title: 'Go Live & Play',
+          step3Desc: 'Enter your TikTok @username and launch interactive gift-driven stream games.',
+          changelogTitle: "What's New in This Release",
+          footerCopy: '© 2026 Tik Games. All rights reserved.'
+        }
+      };
+
+      function getLang() {
+        return localStorage.getItem('tik_games_lang') === 'en' ? 'en' : 'ar';
+      }
+
+      function renderLanguageText() {
+        const lang = getLang();
+        const c = i18nCopy[lang];
+
+        document.getElementById('dlStatusPill').textContent = c.statusPill;
+        document.getElementById('dlSourceTag').textContent = c.sourceTag;
+        document.getElementById('lblVer').textContent = c.lblVer;
+        document.getElementById('lblSize').textContent = c.lblSize;
+        document.getElementById('lblPlatform').textContent = c.lblPlatform;
+        document.getElementById('dlBtnLabel').textContent = c.btnDirect;
+        document.getElementById('dlBackLabel').textContent = c.btnBack;
+        document.getElementById('step1Title').textContent = c.step1Title;
+        document.getElementById('step1Desc').textContent = c.step1Desc;
+        document.getElementById('step2Title').textContent = c.step2Title;
+        document.getElementById('step2Desc').textContent = c.step2Desc;
+        document.getElementById('step3Title').textContent = c.step3Title;
+        document.getElementById('step3Desc').textContent = c.step3Desc;
+        document.getElementById('dlChangelogTitle').textContent = c.changelogTitle;
+        document.getElementById('footerCopy').textContent = c.footerCopy;
+
+        const titleEl = document.getElementById('dlTitle');
+        const subEl = document.getElementById('dlSubtitle');
+        if (currentState === 'loading') {
+          titleEl.textContent = c.loadingTitle;
+          subEl.textContent = c.loadingSub;
+        } else if (currentState === 'ready') {
+          titleEl.textContent = c.readyTitle;
+          subEl.textContent = c.readySub;
+        } else {
+          titleEl.textContent = c.fallbackTitle;
+          subEl.textContent = c.fallbackSub;
+        }
+      }
+
+      window.addEventListener('tikgames:langchange', renderLanguageText);
+      renderLanguageText();
+
+      function renderChangelog(items) {
+        if (!Array.isArray(items) || items.length === 0) return;
+        const card = document.getElementById('dlChangelogCard');
+        const list = document.getElementById('dlChangelogList');
+        list.innerHTML = '';
+        items.forEach(line => {
+          const clean = String(line).replace(/^[-*•]\s*/, '').trim();
+          if (!clean) return;
+          const li = document.createElement('li');
+          li.textContent = clean;
+          list.appendChild(li);
+        });
+        if (list.children.length > 0) {
+          card.style.display = 'block';
+        }
+      }
+
+      function applyRelease(url, version, fileName, sizeBytes, notes) {
+        resolvedUrl = url;
+        currentState = 'ready';
+        document.getElementById('dlSpinner').classList.add('done');
+        document.getElementById('dlDirectBtn').href = url;
+        document.getElementById('dlVersionPill').textContent = version || 'Latest';
+        document.getElementById('dlFilePill').textContent = fileName || 'TikGames_Setup.exe';
+        document.getElementById('dlSizePill').textContent = sizeBytes
+          ? `${(sizeBytes / (1024 * 1024)).toFixed(1)} MB`
+          : 'Windows x64';
+
+        renderLanguageText();
+        if (notes) renderChangelog(notes);
+
+        if (!downloadTriggered) {
+          downloadTriggered = true;
+          setTimeout(() => {
+            window.location.href = url;
+          }, 400);
+        }
+      }
+
+      async function resolveLatest() {
+        let changelogItems = null;
+
+        // Also fetch version.json in background for localized/clean changelog notes
+        const verPromise = fetch(`version.json?t=${Date.now()}`, { cache: 'no-store' })
+          .then(r => (r.ok ? r.json() : null))
+          .catch(() => null);
+
+        try {
+          const [ghRes, verData] = await Promise.all([
+            fetch(API_URL, {
+              headers: { 'Accept': 'application/vnd.github+json' },
+              cache: 'no-store'
+            }).catch(() => null),
+            verPromise
+          ]);
+
+          if (verData && Array.isArray(verData.changelog)) {
+            changelogItems = verData.changelog;
+          }
+
+          if (ghRes && ghRes.ok) {
+            const data = await ghRes.json();
+            const assets = Array.isArray(data.assets) ? data.assets : [];
+            const exeAsset =
+              assets.find(a => /\.exe$/i.test(a.name)) ||
+              assets.find(a => /\.(msi|zip)$/i.test(a.name)) ||
+              assets[0];
+
+            const notesFromBody = data.body
+              ? data.body.split(/\r?\n/).filter(l => l.trim().length > 0)
+              : null;
+
+            if (exeAsset && exeAsset.browser_download_url) {
+              applyRelease(
+                exeAsset.browser_download_url,
+                data.tag_name,
+                exeAsset.name,
+                exeAsset.size,
+                notesFromBody && notesFromBody.length ? notesFromBody : changelogItems
+              );
+              return;
+            }
+          }
+
+          if (verData && verData.download_url) {
+            const ver = verData.latest_version || verData.version || '';
+            const formattedVer = ver && !ver.startsWith('v') ? `v${ver}` : ver;
+            const nameFromUrl = verData.download_url.split('/').pop();
+            applyRelease(verData.download_url, formattedVer, nameFromUrl, null, changelogItems);
+            return;
+          }
+        } catch (_) {}
+
+        currentState = 'fallback';
+        document.getElementById('dlSpinner').classList.add('done');
+        document.getElementById('dlDirectBtn').href = FALLBACK_PAGE;
+        renderLanguageText();
+      }
+
+      resolveLatest();
+    })();
+  </script>
+</body>
+</html>

@@ -4,7 +4,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://tikgames.site/</loc>
-    <lastmod>2026-11-08</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://tikgames.site/" />
@@ -20,5 +20,11 @@
       <image:title>ألعاب بث تيك توك لايف تفاعلية - سباق الهجن 3D</image:title>
       <image:caption>لعبة سباق الهجن ثلاثية الأبعاد التفاعلية مع هدايا تيك توك لايف</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://tikgames.site/download</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
 </urlset>

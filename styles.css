@@ -388,6 +388,8 @@ body.lang-en {
   font-weight: 700;
   text-decoration: none;
   cursor: not-allowed;
+  user-select: none;
+  opacity: 0.72;
   box-shadow: var(--specular-inset);
 }
 
@@ -400,6 +402,351 @@ body.lang-en {
   border-radius: var(--radius-pill);
   letter-spacing: 0.5px;
   text-transform: uppercase;
+}
+
+/* Active Latest Release Download Pill (Apple Frosted Glass + Royal Blue Accent) */
+.btn-download-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 18px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid rgba(59, 130, 246, 0.45);
+  color: #ffffff;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(59, 130, 246, 0.18), var(--specular-inset);
+  transition: all 0.25s var(--ease-apple);
+}
+
+.btn-download-pill:hover {
+  background: rgba(59, 130, 246, 0.18);
+  border-color: rgba(96, 165, 250, 0.85);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 28px rgba(59, 130, 246, 0.35), var(--specular-inset-strong);
+}
+
+.tag-version-badge {
+  background: rgba(59, 130, 246, 0.25);
+  border: 1px solid rgba(59, 130, 246, 0.45);
+  color: #93c5fd;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.4px;
+}
+
+/* Dedicated /download Portal (Matches Main Site Apple Glass Architecture) */
+.download-page-wrap {
+  position: relative;
+  z-index: 1;
+  max-width: 920px;
+  min-height: calc(100vh - 155px);
+  margin: 0 auto;
+  padding: 2.8rem 24px 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.download-studio-frame {
+  width: 100%;
+  background: var(--glass-panel);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-glass-strong);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow:
+    0 32px 80px rgba(0, 0, 0, 0.58),
+    0 0 60px rgba(59, 130, 246, 0.14),
+    var(--specular-inset-strong);
+}
+
+.download-studio-body {
+  padding: 2.4rem 2.2rem 2.2rem;
+  text-align: center;
+}
+
+.download-icon-halo {
+  position: relative;
+  width: 92px;
+  height: 92px;
+  margin: 0 auto 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.download-icon-halo::before {
+  content: '';
+  position: absolute;
+  inset: -14px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.32) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.download-app-icon {
+  position: relative;
+  width: 84px;
+  height: 84px;
+  border-radius: 20px;
+  filter: drop-shadow(0 12px 28px rgba(59, 130, 246, 0.35));
+}
+
+.download-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
+  background: rgba(59, 130, 246, 0.14);
+  border: 1px solid rgba(59, 130, 246, 0.34);
+  color: #93c5fd;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.download-title {
+  font-size: clamp(1.65rem, 3.2vw, 2.25rem);
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.download-subtitle {
+  font-size: 0.98rem;
+  color: var(--text-secondary);
+  max-width: 540px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.65;
+}
+
+.download-spinner {
+  width: 26px;
+  height: 26px;
+  margin: 0 auto 1.25rem;
+  border-radius: 50%;
+  border: 3px solid rgba(59, 130, 246, 0.2);
+  border-top-color: #3b82f6;
+  animation: tgSpin 0.8s linear infinite;
+}
+
+.download-spinner.done {
+  display: none;
+}
+
+@keyframes tgSpin {
+  to { transform: rotate(360deg); }
+}
+
+.download-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 1.5rem 0 1rem;
+}
+
+.download-stat-tile {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  padding: 14px 12px;
+  text-align: center;
+  box-shadow: var(--specular-inset);
+}
+
+.download-stat-label {
+  display: block;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.download-stat-value {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #ffffff;
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+.download-file-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 16px;
+  border-radius: var(--radius-sm);
+  background: rgba(7, 9, 14, 0.65);
+  border: 1px solid var(--border-glass);
+  margin-bottom: 1.75rem;
+  direction: ltr;
+}
+
+.download-file-name {
+  font-family: var(--font-mono);
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.download-source-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #93c5fd;
+  background: rgba(59, 130, 246, 0.16);
+  border: 1px solid rgba(59, 130, 246, 0.32);
+  padding: 3px 9px;
+  border-radius: var(--radius-pill);
+  flex-shrink: 0;
+}
+
+.download-actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.download-actions-row .btn-whatsapp-pill,
+.download-actions-row .btn-download-pill {
+  min-width: 220px;
+  justify-content: center;
+}
+
+.download-steps-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.download-step-card {
+  background: var(--glass-panel);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.2rem;
+  box-shadow: var(--specular-inset);
+}
+
+.download-step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(59, 130, 246, 0.18);
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  color: var(--accent-top);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 800;
+  margin-bottom: 0.65rem;
+}
+
+.download-step-title {
+  font-size: 0.96rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.3rem;
+}
+
+.download-step-desc {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.download-changelog-card {
+  width: 100%;
+  background: var(--glass-panel);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  padding: 1.35rem 1.5rem;
+  box-shadow: var(--specular-inset);
+}
+
+.download-changelog-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.download-changelog-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.download-changelog-list li {
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.download-changelog-list li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent-glow);
+  flex-shrink: 0;
+}
+
+@media (max-width: 720px) {
+  .download-studio-body {
+    padding: 1.75rem 1.25rem;
+  }
+  .download-stats-grid,
+  .download-steps-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .download-actions-row {
+    flex-direction: column;
+  }
+  .download-actions-row .btn-whatsapp-pill,
+  .download-actions-row .btn-download-pill {
+    width: 100%;
+  }
+  .download-file-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 /* --------------------------------------------------------------------------
