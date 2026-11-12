@@ -1,8 +1,8 @@
 {
-  "version": "0.1.1",
-  "latest_version": "0.1.1",
-  "release_name": "Tik Games v0.1.1",
-  "download_url": "https://github.com/youssef-out/TikGames_site/releases/download/v0.1.1/TikGames_Setup_v0.1.1.exe",
+  "version": "0.1.2",
+  "latest_version": "0.1.2",
+  "release_name": "Tik Games v0.1.2",
+  "download_url": "https://github.com/youssef-out/TikGames_site/releases/download/v0.1.2/TikGames_Setup_v0.1.2.exe",
   "mandatory": false,
   "changelog": [
     "Fixed sand dunes and horizon mountains flickering",
