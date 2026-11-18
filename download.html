@@ -55,6 +55,7 @@
           <li><a href="./#games" class="nav-link" data-i18n="nav_games">الألعاب</a></li>
           <li><a href="./#live-demo" class="nav-link" data-i18n="nav_demo">تجربة اللعبة</a></li>
           <li><a href="./#pricing" class="nav-link" data-i18n="nav_pricing">الاشتراكات</a></li>
+          <li><a href="download.html" class="nav-link active" data-i18n="nav_download">تحميل التطبيق</a></li>
           <li><a href="./#contact" class="nav-link" data-i18n="nav_contact">تواصل عبر واتساب</a></li>
         </ul>
       </nav>
@@ -229,22 +230,21 @@
 
       let currentState = 'loading'; // 'loading' | 'ready' | 'fallback'
       let resolvedUrl = FALLBACK_PAGE;
-      let downloadTriggered = false;
 
       const i18nCopy = {
         ar: {
           statusPill: 'إصدار رسمي موثّق • Tik Games',
           loadingTitle: 'جاري تجهيز أحدث إصدار...',
           loadingSub: 'يتم الآن تجهيز رابط التحميل المباشر لنسختك الرسمية.',
-          readyTitle: 'بدأ تحميل أحدث إصدار!',
-          readySub: 'إذا لم يبدأ التحميل تلقائياً خلال ثوانٍ، اضغط على زر التحميل المباشر أدناه.',
+          readyTitle: 'أحدث إصدار جاهز للتحميل',
+          readySub: 'اضغط على زر التحميل أدناه لبدء تنزيل النسخة الرسمية على جهازك.',
           fallbackTitle: 'أحدث إصدار جاهز للتحميل',
           fallbackSub: 'اضغط على الزر أدناه لبدء تحميل أحدث إصدار.',
           sourceTag: 'مثبّت رسمي',
           lblVer: 'الإصدار الحالي',
           lblSize: 'حجم الملف',
           lblPlatform: 'النظام المدعوم',
-          btnDirect: 'اضغط هنا للتحميل المباشر',
+          btnDirect: 'تحميل التطبيق الآن (Windows)',
           btnBack: 'العودة إلى الرئيسية',
           step1Title: 'تشغيل المثبّت',
           step1Desc: 'افتح ملف التثبيت بعد اكتمال التحميل وسيتم إعداد البرنامج تلقائياً.',
@@ -259,15 +259,15 @@
           statusPill: 'Verified Official Release • Tik Games',
           loadingTitle: 'Fetching latest release...',
           loadingSub: 'Preparing your direct download for the newest official installer.',
-          readyTitle: 'Your Download Has Started!',
-          readySub: 'If your download does not start automatically within a few seconds, use the direct button below.',
+          readyTitle: 'Latest Release Ready to Download',
+          readySub: 'Click the download button below to start downloading the official installer on your PC.',
           fallbackTitle: 'Latest Release Ready',
           fallbackSub: 'Click the button below to download the latest official installer.',
           sourceTag: 'Official Installer',
           lblVer: 'Latest Version',
           lblSize: 'File Size',
           lblPlatform: 'Platform',
-          btnDirect: 'Download Installer Now',
+          btnDirect: 'Download Installer Now (Windows)',
           btnBack: 'Back to Home',
           step1Title: 'Run the Installer',
           step1Desc: 'Open the setup file once downloaded to install Tik Games in seconds.',
@@ -351,13 +351,6 @@
 
         renderLanguageText();
         if (notes) renderChangelog(notes);
-
-        if (!downloadTriggered) {
-          downloadTriggered = true;
-          setTimeout(() => {
-            window.location.href = url;
-          }, 400);
-        }
       }
 
       async function resolveLatest() {
