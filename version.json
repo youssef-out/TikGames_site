@@ -1,8 +1,8 @@
 {
-  "version": "0.1.4",
-  "latest_version": "0.1.4",
-  "release_name": "Tik Games v0.1.4",
-  "download_url": "https://github.com/youssef-out/TikGames_site/releases/download/v0.1.4/TikGames_Setup_v0.1.4.exe",
+  "version": "0.1.5",
+  "latest_version": "0.1.5",
+  "release_name": "Tik Games v0.1.5",
+  "download_url": "https://github.com/youssef-out/TikGames_site/releases/download/v0.1.5/TikGames_Setup_v0.1.5.exe",
   "mandatory": false,
   "changelog": []
 }
